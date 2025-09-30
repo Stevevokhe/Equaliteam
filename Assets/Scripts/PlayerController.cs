@@ -38,13 +38,12 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-       
+
     private void Update()
     {
-        
-
         // Ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
+
         if (canMove)
         {
             Vector2 input = moveAction.ReadValue<Vector2>();
@@ -52,7 +51,24 @@ public class PlayerController : MonoBehaviour
             verticalInput = input.y;
         }
 
-        
+        // Apply drag based on whether player is moving or not
+        if (grounded)
+        {
+            // If no input, apply higher drag to slow down naturally
+            if (Mathf.Abs(horizontalInput) < 0.1f && Mathf.Abs(verticalInput) < 0.1f)
+            {
+                rb.linearDamping = groundDrag * 2f; // Higher drag when not moving
+            }
+            else
+            {
+                rb.linearDamping = groundDrag; // Normal drag when moving
+            }
+        }
+        else
+        {
+            rb.linearDamping = 0; // No drag in air
+        }
+
         if (rb.linearVelocity.magnitude < 0.01f)
         {
             animator.SetBool("IsMoving", false);
@@ -61,7 +77,6 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("IsMoving", true);
         }
-
     }
 
     private void FixedUpdate()
@@ -93,8 +108,11 @@ public class PlayerController : MonoBehaviour
         // Calculate movement direction based on camera orientation
         moveDirection = cameraForward * verticalInput + cameraRight * horizontalInput;
 
-        rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
-
+        // Only apply force if there's input
+        if (moveDirection.magnitude > 0.1f)
+        {
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+        }
     }
 
 
