@@ -1,9 +1,3 @@
-using UnityEngine;
-
-public class EnumList : MonoBehaviour
-{
-
-}
 
 public enum PlayerTool
 {
