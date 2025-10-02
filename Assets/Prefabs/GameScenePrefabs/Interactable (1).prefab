@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 6388846641110727279}
   - component: {fileID: 86264419632878266}
   - component: {fileID: 5563255507970160099}
+  - component: {fileID: 2953532846161968992}
   - component: {fileID: 2964250069900954343}
   - component: {fileID: 5888585513030936170}
   - component: {fileID: 407214710932082046}
@@ -123,6 +124,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2953532846161968992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4017828267369795949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77bab4c022252064482ce26cc27e0031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hazardName: TestHazard
+  hazardPhase: 1
+  requiredTool: 0
+  smokeObject: {fileID: 2406483093231786571}
 --- !u!65 &2964250069900954343
 BoxCollider:
   m_ObjectHideFlags: 0
