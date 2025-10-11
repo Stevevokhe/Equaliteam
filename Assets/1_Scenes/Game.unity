@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &403814759 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6664850883443077379, guid: 532c51bdb517fb9458eb7355020dd9b8, type: 3}
+  m_PrefabInstance: {fileID: 1113483324032914845}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &898350810 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8703905610869550869, guid: 1f0a0eacf061d1641abe7276337f95e9, type: 3}
@@ -508,6 +513,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6664850883443077379, guid: 532c51bdb517fb9458eb7355020dd9b8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6741045374085995370, guid: 532c51bdb517fb9458eb7355020dd9b8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -549,6 +558,10 @@ PrefabInstance:
       propertyPath: interactionGUI
       value: 
       objectReference: {fileID: 1364412322}
+    - target: {fileID: 5888585513030936170, guid: 88fe7621ea1d17341b3b1a70cb1c73d0, type: 3}
+      propertyPath: interactionText
+      value: 
+      objectReference: {fileID: 403814759}
     - target: {fileID: 6388846641110727279, guid: 88fe7621ea1d17341b3b1a70cb1c73d0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -21.82
@@ -587,6 +600,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6388846641110727279, guid: 88fe7621ea1d17341b3b1a70cb1c73d0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833197056225945787, guid: 88fe7621ea1d17341b3b1a70cb1c73d0, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
