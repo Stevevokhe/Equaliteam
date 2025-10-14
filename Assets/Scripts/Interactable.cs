@@ -9,6 +9,15 @@ public class Interactable : MonoBehaviour
     private PlayerController playerController;
 
 
+    private void Start()
+    {
+        interactionGUI = GameObject.Find("GUI");
+        interactionGUI = interactionGUI.transform.Find("InteractableUI").gameObject;
+
+        interactionText = GameObject.Find("GameCanvas");
+        interactionText = interactionText.transform.Find("InteractText").gameObject;
+    }
+
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.E) && playerInZone)
