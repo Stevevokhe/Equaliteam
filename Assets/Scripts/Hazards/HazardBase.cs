@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HazardBase : MonoBehaviour
 {
@@ -10,41 +12,146 @@ public class HazardBase : MonoBehaviour
     public float secondPhaseThreshold = 10f;
     public float thirdPhaseThreshold = 30f;
 
-    private Timer hazardTimer;
+    [Header("Timer UI")]
+    [SerializeField] private GameObject SecondPhaseTimerObject;
+    [SerializeField] private Image TimerImage;
+    [SerializeField] private GameObject ThirdPhaseTimerObject;
+
+    [Header("Pulse Settings")]
+    [SerializeField] private float pulseSpeed = 2f;
+    [SerializeField] private float pulseMinScale = 0.8f;
+    [SerializeField] private float pulseMaxScale = 1.2f;
+
     private bool isActive = false;
+    private bool isPaused = false;
+    private Coroutine pulseCoroutine;
+    private Vector3 originalScale;
+
+    public bool IsActive => isActive;
 
     private void Start()
     {
         SetVFX(false);
+        SetTimerUI(false);
         InitializeHazard();
+
+        if (ThirdPhaseTimerObject != null)
+        {
+            originalScale = ThirdPhaseTimerObject.transform.localScale;
+        }
     }
 
     protected virtual void InitializeHazard()
     {
-        hazardTimer = HazardManager.Instance.CreateTimer(0.1f, UpdateHazardTimer, loop: true);
-        isActive = true;
-
-        HazardManager.Instance.RegisterHazard(this);
+        if (HazardManager.Instance != null)
+        {
+            HazardManager.Instance.RegisterHazard(this);
+        }
     }
 
-    private void UpdateHazardTimer()
+    public void ActivateHazard()
     {
-        if (!isActive) return;
+        if (!isActive)
+        {
+            isActive = true;
+            internalTimer = 0f;
+            hazardPhase = 1;
+            TriggerPhase();
 
-        internalTimer += 0.1f;
+            OnHazardActivated();
+        }
+    }
 
+    public void UpdateHazard(float deltaTime)
+    {
+        if (!isActive || isPaused) return;
+
+        internalTimer += deltaTime;
+
+        if (hazardPhase == 2)
+        {
+            UpdateTimerFill();
+        }
 
         if (hazardPhase == 1 && internalTimer >= secondPhaseThreshold)
         {
             ProgressHazardPhase();
             TriggerPhase();
         }
-
         else if (hazardPhase == 2 && internalTimer >= thirdPhaseThreshold)
         {
             ProgressHazardPhase();
             TriggerPhase();
         }
+    }
+
+    private void UpdateTimerFill()
+    {
+        if (TimerImage != null)
+        {
+            float phase2Duration = thirdPhaseThreshold - secondPhaseThreshold;
+            float phase2Progress = (internalTimer - secondPhaseThreshold) / phase2Duration;
+
+            phase2Progress = Mathf.Clamp01(phase2Progress);
+
+            TimerImage.fillAmount = phase2Progress;
+        }
+    }
+
+    private void SetTimerUI(bool active)
+    {
+        if (SecondPhaseTimerObject != null)
+        {
+            SecondPhaseTimerObject.SetActive(active);
+        }
+    }
+
+    private void SetThirdPhaseUI(bool active)
+    {
+        if (ThirdPhaseTimerObject != null)
+        {
+            ThirdPhaseTimerObject.SetActive(active);
+        }
+    }
+
+    public void ResolveHazard()
+    {
+        if (!isActive) return;
+
+        isActive = false;
+        internalTimer = 0f;
+        hazardPhase = 1;
+        SetVFX(false);
+        SetTimerUI(false);
+        StopPulseCoroutine();
+
+        OnHazardResolved();
+    }
+
+    public void RemoveHazardCompletely()
+    {
+        isActive = false;
+        StopPulseCoroutine();
+        UnregisterFromManager();
+        Destroy(gameObject);
+    }
+
+    private void UnregisterFromManager()
+    {
+        if (HazardManager.Instance != null)
+        {
+            HazardManager.Instance.UnregisterHazard(this);
+        }
+    }
+
+    protected virtual void OnHazardActivated()
+    {
+        Debug.Log($"Hazard activated: {hazardName}");
+    }
+
+    protected virtual void OnHazardResolved()
+    {
+        Debug.Log($"Hazard resolved: {hazardName}");
     }
 
     public int GetHazardPhase()
@@ -70,17 +177,20 @@ public class HazardBase : MonoBehaviour
     {
         hazardPhase = 1;
         internalTimer = 0f;
+        isActive = false;
+        SetTimerUI(false);
+        StopPulseCoroutine();
         TriggerPhase();
     }
 
     public void PauseHazard()
     {
-        isActive = false;
+        isPaused = true;
     }
 
     public void ResumeHazard()
     {
-        isActive = true;
+        isPaused = false;
     }
 
     public virtual void TriggerPhase()
@@ -109,25 +219,72 @@ public class HazardBase : MonoBehaviour
     {
         Debug.Log("First phase triggered on " + gameObject);
         SetVFX(false);
+        SetTimerUI(false);
+        SetThirdPhaseUI(false);
+        StopPulseCoroutine();
     }
 
     public virtual void TriggerSecondPhase()
     {
         Debug.Log("Second phase triggered on " + gameObject);
         SetVFX(true);
+        SetTimerUI(true);
+        StopPulseCoroutine();
+
+        if (TimerImage != null)
+        {
+            TimerImage.fillAmount = 0f;
+        }
     }
 
     public virtual void TriggerThirdPhase()
     {
-       
+        SetThirdPhaseUI(true);
+        SetTimerUI(false);
+        StartPulseCoroutine();
+    }
+
+    private void StartPulseCoroutine()
+    {
+        if (ThirdPhaseTimerObject != null)
+        {
+            StopPulseCoroutine();
+            pulseCoroutine = StartCoroutine(PulseThirdPhaseObject());
+        }
+    }
+
+    private void StopPulseCoroutine()
+    {
+        if (pulseCoroutine != null)
+        {
+            StopCoroutine(pulseCoroutine);
+            pulseCoroutine = null;
+
+            if (ThirdPhaseTimerObject != null)
+            {
+                ThirdPhaseTimerObject.transform.localScale = originalScale;
+            }
+        }
+    }
+
+    private IEnumerator PulseThirdPhaseObject()
+    {
+        while (ThirdPhaseTimerObject != null && ThirdPhaseTimerObject.activeInHierarchy)
+        {
+            float t = 0f;
+            while (t < 1f)
+            {
+                t += Time.deltaTime * pulseSpeed;
+                float scale = Mathf.Lerp(pulseMinScale, pulseMaxScale, Mathf.PingPong(t, 1f));
+                ThirdPhaseTimerObject.transform.localScale = originalScale * scale;
+                yield return null;
+            }
+        }
     }
 
     private void OnDestroy()
     {
-        hazardTimer?.Cancel();
-        if (HazardManager.Instance != null)
-        {
-            HazardManager.Instance.UnregisterHazard(this);
-        }
+        StopPulseCoroutine();
+        UnregisterFromManager();
     }
 }
