@@ -63,6 +63,189 @@ public class HazardManager : MonoBehaviour
         InitializeHazardsWithRandomDelays();
     }
 
+    // Add these methods to your HazardManager class:
+
+    public void OnHazardResolved(HazardBase resolvedHazard)
+    {
+        if (showDebugInfo)
+        {
+            Debug.Log($"HazardManager notified: {resolvedHazard.hazardName} was resolved");
+        }
+
+        // Check current active hazard count
+        int activeHazardCount = GetActiveHazardCount();
+
+        if (showDebugInfo)
+        {
+            Debug.Log($"Active hazards after resolution: {activeHazardCount}/{maxActiveHazards}");
+        }
+
+        // Since a hazard was just resolved, we can trigger a new one if we're below the max
+        if (activeHazardCount < maxActiveHazards)
+        {
+            // Get available inactive hazards
+            List<HazardBase> inactiveHazards = GetInactiveHazards();
+
+            if (inactiveHazards.Count > 0)
+            {
+                // Option 1: Trigger a new hazard immediately
+                TriggerReplacementHazardImmediately();
+
+                // Option 2: Schedule a new hazard with random delay (uncomment if preferred)
+                // ScheduleNextHazardCheck();
+            }
+            else if (showDebugInfo)
+            {
+                Debug.LogWarning("No inactive hazards available to replace the resolved one");
+            }
+        }
+
+        // Ensure we maintain the desired number of active hazards
+        MaintainActiveHazardCount();
+    }
+
+    private void TriggerReplacementHazardImmediately()
+    {
+        List<HazardBase> inactiveHazards = GetInactiveHazards();
+
+        if (inactiveHazards.Count > 0)
+        {
+            // Randomly select an inactive hazard to trigger
+            HazardBase replacementHazard = inactiveHazards[UnityEngine.Random.Range(0, inactiveHazards.Count)];
+
+            // Trigger immediately
+            TriggerHazard(replacementHazard);
+
+            if (showDebugInfo)
+            {
+                Debug.Log($"Immediately triggered replacement hazard: {replacementHazard.hazardName}");
+            }
+        }
+    }
+
+    private void MaintainActiveHazardCount()
+    {
+        int activeHazardCount = GetActiveHazardCount();
+        int hazardsNeeded = maxActiveHazards - activeHazardCount;
+
+        if (hazardsNeeded > 0)
+        {
+            List<HazardBase> inactiveHazards = GetInactiveHazards();
+            int hazardsToSchedule = Mathf.Min(hazardsNeeded, inactiveHazards.Count);
+
+            for (int i = 0; i < hazardsToSchedule; i++)
+            {
+                float randomDelay = GetRandomInterval();
+
+                if (showDebugInfo)
+                {
+                    Debug.Log($"Scheduling hazard activation in {randomDelay:F2} seconds (slot {i + 1}/{hazardsToSchedule})");
+                }
+
+                CreateTimer(randomDelay, CheckAndTriggerHazards, loop: false);
+            }
+        }
+    }
+
+    // Method to fix/resolve a hazard (called when player repairs it)
+    public void FixHazard(HazardBase hazardBase)
+    {
+        if (Hazards.Contains(hazardBase))
+        {
+            // Call the hazard's resolve method which will trigger OnHazardResolved
+            hazardBase.ResolveHazard();
+            // The OnHazardResolved will be called from HazardBase and handle the replacement logic
+        }
+    }
+
+    // Method to permanently remove a hazard from the game
+    public void RemoveAndReplaceHazard(HazardBase hazardToRemove)
+    {
+        if (hazardToRemove == null || !Hazards.Contains(hazardToRemove))
+        {
+            if (showDebugInfo)
+            {
+                Debug.LogWarning("Attempted to remove a hazard that doesn't exist in the list");
+            }
+            return;
+        }
+
+        // Store whether the hazard was active before removal
+        bool wasActive = hazardToRemove.IsActive;
+
+        // Deactivate the hazard if it's still active
+        if (wasActive)
+        {
+            hazardToRemove.DeactivateHazard();
+        }
+
+        // Remove the hazard from the list
+        Hazards.Remove(hazardToRemove);
+
+        if (showDebugInfo)
+        {
+            Debug.Log($"Removed hazard: {hazardToRemove.hazardName}. Was active: {wasActive}");
+        }
+
+        // If the removed hazard was active, immediately try to trigger another one
+        if (wasActive)
+        {
+            TriggerReplacementHazardImmediately();
+        }
+
+        // Check if we need to schedule more hazards
+        MaintainActiveHazardCount();
+    }
+
+    // Alternative version with delay option
+    public void OnHazardResolvedWithDelay(HazardBase resolvedHazard, float replacementDelay = 0f)
+    {
+        if (showDebugInfo)
+        {
+            Debug.Log($"HazardManager notified: {resolvedHazard.hazardName} was resolved. Replacement in {replacementDelay}s");
+        }
+
+        if (replacementDelay > 0f)
+        {
+            CreateTimer(replacementDelay, () =>
+            {
+                CheckAndTriggerHazards();
+            }, loop: false);
+        }
+        else
+        {
+            // Check immediately
+            CheckAndTriggerHazards();
+        }
+    }
+
+    // Method to permanently remove without replacement
+    public void RemoveHazardPermanently(HazardBase hazardToRemove)
+    {
+        if (hazardToRemove == null || !Hazards.Contains(hazardToRemove))
+        {
+            if (showDebugInfo)
+            {
+                Debug.LogWarning("Attempted to remove a hazard that doesn't exist in the list");
+            }
+            return;
+        }
+
+        // Deactivate if active
+        if (hazardToRemove.IsActive)
+        {
+            hazardToRemove.DeactivateHazard();
+        }
+
+        // Remove from list
+        Hazards.Remove(hazardToRemove);
+
+        if (showDebugInfo)
+        {
+            Debug.Log($"Permanently removed hazard: {hazardToRemove.hazardName}");
+        }
+    }
+
     private void InitializeHazardsWithRandomDelays()
     {
         // Trigger hazards up to the max limit with random delays

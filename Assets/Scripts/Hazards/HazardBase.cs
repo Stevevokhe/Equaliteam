@@ -152,6 +152,27 @@ public class HazardBase : MonoBehaviour
     protected virtual void OnHazardResolved()
     {
         Debug.Log($"Hazard resolved: {hazardName}");
+
+        // Notify the HazardManager that this hazard was resolved
+        if (HazardManager.Instance != null)
+        {
+            HazardManager.Instance.OnHazardResolved(this);
+        }
+    }
+
+    // In HazardBase.cs
+    public void DeactivateHazard()
+    {
+        if (isActive)
+        {
+            isActive = false;
+            internalTimer = 0f;
+            hazardPhase = 1;
+            SetVFX(false);
+            SetTimerUI(false);
+            SetThirdPhaseUI(false);
+            StopPulseCoroutine();
+        }
     }
 
     public int GetHazardPhase()
