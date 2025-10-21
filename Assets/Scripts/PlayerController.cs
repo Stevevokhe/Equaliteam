@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     private Animator animator;
 
+    [SerializeField] private HazardBase interactedHazard; 
+
     private void Start()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -83,6 +85,21 @@ public class PlayerController : MonoBehaviour
             MovePlayer();
         }
 
+    }
+
+    public void SetInteractedHazard(HazardBase hazard)
+    {
+        interactedHazard = hazard;
+    }
+
+    public void ResetInteractionHazard()
+    {
+        interactedHazard = null;
+    }
+
+    public void FixHazard()
+    {
+        interactedHazard.ResolveHazard();
     }
 
     public void EnablePlayerMovement()

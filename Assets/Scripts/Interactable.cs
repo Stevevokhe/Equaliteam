@@ -26,11 +26,13 @@ public class Interactable : MonoBehaviour
             playerController.canMove = false;
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            playerController = other.GetComponentInParent<PlayerController>();            
+            playerController = other.GetComponentInParent<PlayerController>();
+            playerController.SetInteractedHazard(GetComponent<HazardBase>());
             playerInZone = true;
             interactionText.SetActive(true);            
         }
@@ -42,6 +44,7 @@ public class Interactable : MonoBehaviour
         {
             playerInZone = false;
             interactionText.SetActive(false);
+            playerController.ResetInteractionHazard();
         }
     }
 }
