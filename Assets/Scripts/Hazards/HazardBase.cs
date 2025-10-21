@@ -160,7 +160,6 @@ public class HazardBase : MonoBehaviour
         }
     }
 
-    // In HazardBase.cs
     public void DeactivateHazard()
     {
         if (isActive)
