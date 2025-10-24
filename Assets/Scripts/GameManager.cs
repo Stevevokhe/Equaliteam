@@ -17,14 +17,14 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         hazardManager = FindAnyObjectByType<HazardManager>();
-        hazardManager.onHouseStartedBurning += StartBurning;
-        hazardManager.onHouseStoppedBurning += StopBurning;
+        hazardManager.OnHouseStartedBurning += StartBurning;
+        hazardManager.OnHouseStoppedBurning += StopBurning;
     }
 
     private void OnDisable()
     {
-        hazardManager.onHouseStartedBurning -= StartBurning;
-        hazardManager.onHouseStoppedBurning -= StopBurning;
+        hazardManager.OnHouseStartedBurning -= StartBurning;
+        hazardManager.OnHouseStoppedBurning -= StopBurning;
     }
 
     void Start()
@@ -74,16 +74,21 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void StartBurning(float burningHazardNumber)
+    public void StartBurning()
     {
-        nrOfBurningHazards = burningHazardNumber;
+        nrOfBurningHazards++;
         isBurning = true;
     }
 
     public void StopBurning()
     {
-        nrOfBurningHazards = 0;
-        isBurning = false;
+        nrOfBurningHazards--;
+        if(nrOfBurningHazards <= 0)
+        {
+            nrOfBurningHazards = 0;
+            isBurning = false;
+        }
+        
     }
 
     public static string FormatTime(float totalSeconds)

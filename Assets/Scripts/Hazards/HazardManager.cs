@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HazardManager : MonoBehaviour
 {
-    public event Action<float> onHouseStartedBurning;
-    public event Action onHouseStoppedBurning;
+    public event Action OnHouseStartedBurning;
+    public event Action OnHouseStoppedBurning;
     public static HazardManager Instance;
 
     [Header("Hazard Management")]
@@ -144,7 +144,6 @@ public class HazardManager : MonoBehaviour
     {
         if (Hazards.Contains(hazardBase))
         {
-            onHouseStoppedBurning?.Invoke();
             hazardBase.ResolveHazard();
         }
     }
@@ -312,7 +311,6 @@ public class HazardManager : MonoBehaviour
         if (hazard != null && !hazard.IsActive)
         {
             hazard.ActivateHazard();
-            onHouseStartedBurning?.Invoke(GetActiveHazardCount());
             if (showDebugInfo)
             {
                 Debug.Log($"Triggered hazard: {hazard.hazardName}");
@@ -592,4 +590,16 @@ public class HazardManager : MonoBehaviour
             }
         }
     }
+
+    public void StartHouseBurning()
+    {
+        OnHouseStartedBurning?.Invoke();
+    }
+    public void StopHouseBurning()
+    {
+        OnHouseStoppedBurning?.Invoke();
+    }
+
+
+    
 }

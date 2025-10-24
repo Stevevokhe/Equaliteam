@@ -156,6 +156,7 @@ public class HazardBase : MonoBehaviour
         // Notify the HazardManager that this hazard was resolved
         if (HazardManager.Instance != null)
         {
+            HazardManager.Instance.StopHouseBurning();
             HazardManager.Instance.OnHazardResolved(this);
         }
     }
@@ -259,6 +260,7 @@ public class HazardBase : MonoBehaviour
 
     public virtual void TriggerThirdPhase()
     {
+        HazardManager.Instance.StartHouseBurning();
         SetThirdPhaseUI(true);
         SetTimerUI(false);
         StartPulseCoroutine();
