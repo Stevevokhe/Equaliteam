@@ -182,7 +182,8 @@ public class HazardBase : MonoBehaviour
 
     public bool CheckToolRequirement(PlayerTool heldTool)
     {
-        return heldTool == requiredTool;
+        if (requiredTool == PlayerTool.None) return true;
+        else return heldTool == requiredTool;
     }
 
     public void ProgressHazardPhase()
