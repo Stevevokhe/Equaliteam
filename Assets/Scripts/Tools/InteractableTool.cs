@@ -1,17 +1,15 @@
-using Unity.VisualScripting;
 using UnityEngine;
-[RequireComponent (typeof(BoxCollider))]
-public class Interactable : MonoBehaviour 
+
+public class InteractableTool : MonoBehaviour
 {
     bool playerInZone;
     [SerializeField]
-    GameObject interactionGUI,interactionText;
+    GameObject interactionGUI, interactionText;
     private PlayerController playerController;
-    private HazardBase thisHazard;
+    [SerializeField] private PlayerToolSO toolSO;
 
     private void Start()
     {
-        thisHazard = GetComponent<HazardBase>();
 
         interactionGUI = GameObject.Find("GUI");
         interactionGUI = interactionGUI.transform.Find("InteractableUI").gameObject;
@@ -22,7 +20,7 @@ public class Interactable : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.E) && playerInZone && thisHazard.CheckToolRequirement(playerController.GetCurrentTool()))
+        if (Input.GetKeyUp(KeyCode.E) && playerInZone)
         {
             interactionGUI.SetActive(true);
             playerController.canMove = false;
@@ -36,7 +34,7 @@ public class Interactable : MonoBehaviour
             playerController = other.GetComponentInParent<PlayerController>();
             playerController.SetInteractedHazard(GetComponent<HazardBase>());
             playerInZone = true;
-            interactionText.SetActive(true);            
+            interactionText.SetActive(true);
         }
     }
 

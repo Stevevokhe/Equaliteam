@@ -28,7 +28,11 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     private Animator animator;
 
-    [SerializeField] private HazardBase interactedHazard; 
+    [SerializeField] private HazardBase interactedHazard;
+
+    [Header("Tools")]
+    private PlayerTool currentTool;
+    public Transform playerToolTransform;
 
     private void Start()
     {
@@ -85,6 +89,16 @@ public class PlayerController : MonoBehaviour
             MovePlayer();
         }
 
+    }
+
+    public void SetPlayerTool(PlayerTool tool)
+    {
+        currentTool = tool;
+    }
+
+    public PlayerTool GetCurrentTool()
+    {
+        return currentTool;
     }
 
     public void SetInteractedHazard(HazardBase hazard)
