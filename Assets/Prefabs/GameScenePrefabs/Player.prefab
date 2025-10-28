@@ -243,6 +243,8 @@ MonoBehaviour:
   canMove: 1
   interactedHazard: {fileID: 0}
   playerToolTransform: {fileID: 0}
+  CurrentToolSO: {fileID: 0}
+  CarriedToolObject: {fileID: 0}
 --- !u!54 &944627160492819657
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -416,7 +418,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6133787486068845006}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: a52aa9d023d90a14fbe63598393db62c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
