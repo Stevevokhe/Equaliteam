@@ -29,6 +29,7 @@ public class InteractableTool : MonoBehaviour
     private void PickUpThisTool()
     {
         playerController.PickUpPlayerTool(toolSO);
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
