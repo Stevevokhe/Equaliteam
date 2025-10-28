@@ -13,8 +13,6 @@ public class Interactable : MonoBehaviour
     {
         thisHazard = GetComponent<HazardBase>();
 
-        interactionGUI = GameObject.Find("GUI");
-        interactionGUI = interactionGUI.transform.Find("InteractableUI").gameObject;
 
         interactionText = GameObject.Find("GameCanvas");
         interactionText = interactionText.transform.Find("InteractText").gameObject;
@@ -37,7 +35,8 @@ public class Interactable : MonoBehaviour
             playerController.SetInteractedHazard(GetComponent<HazardBase>());
             playerController.SetHazardRangeBool(true);
             playerInZone = true;
-            interactionText.SetActive(true);            
+            interactionText.SetActive(true);
+
         }
     }
 
