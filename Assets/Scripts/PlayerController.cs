@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.Windows;
 
 public class PlayerController : MonoBehaviour
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
     [Header("Tools")]
     private PlayerTool currentTool;
     public Transform playerToolTransform;
+    public PlayerToolSO CurrentToolSO;
 
     private void Start()
     {
@@ -96,6 +98,17 @@ public class PlayerController : MonoBehaviour
         currentTool = tool;
     }
 
+    public void PickUpPlayerTool(PlayerToolSO toolSO)
+    {
+        CurrentToolSO = toolSO;
+        Instantiate(CurrentToolSO.CarriedToolObject, playerToolTransform);
+    }
+
+    public void DropPlayerTool()
+    {
+
+    }
+
     public PlayerTool GetCurrentTool()
     {
         return currentTool;
@@ -116,9 +129,9 @@ public class PlayerController : MonoBehaviour
         interactedHazard.ResolveHazard();
     }
 
-    public void EnablePlayerMovement()
+    public void SetCanMoveBool(bool set)
     {
-        canMove = true;
+        canMove = set;
     }
 
     private void MovePlayer()

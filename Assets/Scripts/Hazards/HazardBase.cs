@@ -123,6 +123,7 @@ public class HazardBase : MonoBehaviour
         hazardPhase = 1;
         SetVFX(false);
         SetTimerUI(false);
+        SetThirdPhaseUI(false);
         StopPulseCoroutine();
 
         OnHazardResolved();
