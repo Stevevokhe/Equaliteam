@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: TestTool
   m_EditorClassIdentifier: 
   PlayerTool: 1
-  ToolObject: {fileID: 5797870852697129957, guid: b62ec8e84d0f79f4b93f87432abc9e4f, type: 3}
+  InteractableToolObject: {fileID: 5797870852697129957, guid: e5a9a003a902d9f438bb96ac423ddde3, type: 3}
+  CarriedToolObject: {fileID: 5797870852697129957, guid: b62ec8e84d0f79f4b93f87432abc9e4f, type: 3}

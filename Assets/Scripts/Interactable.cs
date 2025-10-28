@@ -35,6 +35,7 @@ public class Interactable : MonoBehaviour
         {
             playerController = other.GetComponentInParent<PlayerController>();
             playerController.SetInteractedHazard(GetComponent<HazardBase>());
+            playerController.SetHazardRangeBool(true);
             playerInZone = true;
             interactionText.SetActive(true);            
         }
@@ -46,6 +47,7 @@ public class Interactable : MonoBehaviour
         {
             playerInZone = false;
             interactionText.SetActive(false);
+            playerController.SetHazardRangeBool(false);
             playerController.ResetInteractionHazard();
         }
     }

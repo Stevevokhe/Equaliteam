@@ -35,6 +35,9 @@ public class PlayerController : MonoBehaviour
     private PlayerTool currentTool;
     public Transform playerToolTransform;
     public PlayerToolSO CurrentToolSO;
+    public GameObject CarriedToolObject;
+
+    private bool inRangeOfHazard = false;
 
     private void Start()
     {
@@ -50,6 +53,11 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
+
+        if (UnityEngine.Input.GetKeyUp(KeyCode.E) && !inRangeOfHazard && CarriedToolObject != null)
+        {
+            DropPlayerTool();
+        }
 
         if (canMove)
         {
@@ -93,6 +101,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void SetHazardRangeBool(bool value)
+    {
+        inRangeOfHazard = value;
+    }
+
     public void SetPlayerTool(PlayerTool tool)
     {
         currentTool = tool;
@@ -101,12 +114,13 @@ public class PlayerController : MonoBehaviour
     public void PickUpPlayerTool(PlayerToolSO toolSO)
     {
         CurrentToolSO = toolSO;
-        Instantiate(CurrentToolSO.CarriedToolObject, playerToolTransform);
+        CarriedToolObject = Instantiate(CurrentToolSO.CarriedToolObject, playerToolTransform);
     }
 
     public void DropPlayerTool()
     {
-
+        Destroy(CarriedToolObject);
+        Instantiate(CurrentToolSO.InteractableToolObject, transform.position, Quaternion.identity);
     }
 
     public PlayerTool GetCurrentTool()
