@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI houseHealthValueText, timerValueText;
     private bool isBurning = false;
     private HazardManager hazardManager;
-    private GameObject gameOverPanel,victoryPanel;
+    [SerializeField] private GameObject gameOverPanel,victoryPanel;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void OnEnable()
     {
@@ -33,8 +33,6 @@ public class GameManager : MonoBehaviour
         timerValueText = GameObject.Find("TimerValue").GetComponent<TextMeshProUGUI>();
         currentTime = gameEndTime;
         Time.timeScale = 1f;
-        gameOverPanel = GameObject.Find("GameOverPanel");
-        victoryPanel = GameObject.Find("VictoryPanel");
         gameOverPanel.SetActive(false);
         victoryPanel.SetActive(false);  
     }
