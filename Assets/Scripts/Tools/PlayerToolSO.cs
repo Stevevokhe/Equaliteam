@@ -4,5 +4,6 @@ using UnityEngine;
 public class PlayerToolSO : ScriptableObject
 {
     public PlayerTool PlayerTool;
-    public GameObject ToolObject;
+    public GameObject InteractableToolObject;
+    public GameObject CarriedToolObject;
 }

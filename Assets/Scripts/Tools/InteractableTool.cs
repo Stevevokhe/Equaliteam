@@ -22,9 +22,13 @@ public class InteractableTool : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.E) && playerInZone)
         {
-            interactionGUI.SetActive(true);
-            playerController.canMove = false;
+            PickUpThisTool();
         }
+    }
+
+    private void PickUpThisTool()
+    {
+        playerController.PickUpPlayerTool(toolSO);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,7 +36,6 @@ public class InteractableTool : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             playerController = other.GetComponentInParent<PlayerController>();
-            playerController.SetInteractedHazard(GetComponent<HazardBase>());
             playerInZone = true;
             interactionText.SetActive(true);
         }
