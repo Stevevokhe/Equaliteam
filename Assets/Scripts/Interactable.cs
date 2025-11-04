@@ -5,6 +5,7 @@ public class Interactable : MonoBehaviour
 {
     bool playerInZone;
     [SerializeField]
+    private string minigameName;
     GameObject interactionGUI,interactionText;
     private PlayerController playerController;
     private HazardBase thisHazard;
@@ -13,16 +14,15 @@ public class Interactable : MonoBehaviour
     {
         thisHazard = GetComponent<HazardBase>();
 
-
         interactionText = GameObject.Find("GameCanvas");
         interactionText = interactionText.transform.Find("InteractText").gameObject;
     }
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.E) && playerInZone && thisHazard.CheckToolRequirement(playerController.GetCurrentTool()))
+        if (Input.GetKeyUp(KeyCode.E) && playerInZone && thisHazard.CheckToolRequirement(playerController.GetCurrentTool()) && thisHazard.GetHazardPhase() != 1)
         {
-            interactionGUI.SetActive(true);
+            EventBus.InvokeOnMinigameCalled(minigameName);
             playerController.canMove = false;
         }
     }
