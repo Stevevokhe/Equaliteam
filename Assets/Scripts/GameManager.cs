@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
 
 
 
-        houseHealthValueText.SetText($"{houseHealth:0.0}%");
+        houseHealthValueText.SetText(((int)houseHealth) + "%");
         timerValueText.SetText(FormatTime(currentTime));
 
 
