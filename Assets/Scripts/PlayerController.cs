@@ -140,6 +140,7 @@ public class PlayerController : MonoBehaviour
 
     public void FixHazard()
     {
+        SetCanMoveBool(true);
         interactedHazard.ResolveHazard();
     }
 
@@ -166,5 +167,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        EventBus.OnMinigameCompleted += FixHazard;
+    }
+
+    private void OnDisable()
+    {
+        EventBus.OnMinigameCompleted -= FixHazard;
+    }
 
 }

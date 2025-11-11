@@ -5437,8 +5437,8 @@ MonoBehaviour:
   requiredTool: 0
   smokeObject: {fileID: 3765789501458043882}
   internalTimer: 0
-  secondPhaseThreshold: 10
-  thirdPhaseThreshold: 30
+  secondPhaseThreshold: 2
+  thirdPhaseThreshold: 20
   SecondPhaseTimerObject: {fileID: 1988006460979072393}
   TimerImage: {fileID: 6479559901757313623}
   ThirdPhaseTimerObject: {fileID: 7009216757319908599}
