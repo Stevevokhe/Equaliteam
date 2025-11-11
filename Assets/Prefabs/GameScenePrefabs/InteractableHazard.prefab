@@ -5437,8 +5437,8 @@ MonoBehaviour:
   requiredTool: 0
   smokeObject: {fileID: 3765789501458043882}
   internalTimer: 0
-  secondPhaseThreshold: 10
-  thirdPhaseThreshold: 30
+  secondPhaseThreshold: 2
+  thirdPhaseThreshold: 20
   SecondPhaseTimerObject: {fileID: 1988006460979072393}
   TimerImage: {fileID: 6479559901757313623}
   ThirdPhaseTimerObject: {fileID: 7009216757319908599}
@@ -5478,8 +5478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3850d8bf8524f8b489448f8396997178, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionGUI: {fileID: 0}
-  interactionText: {fileID: 0}
+  minigameName: 
 --- !u!65 &971967584364632608
 BoxCollider:
   m_ObjectHideFlags: 0
