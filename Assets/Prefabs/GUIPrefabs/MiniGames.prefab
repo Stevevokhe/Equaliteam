@@ -53,6 +53,8 @@ MonoBehaviour:
   fill: {fileID: 4487924943710268271}
   minAngle: 225
   maxAngle: 315
+  startingRotation: 0.135
+  angle: 0
 --- !u!1 &1392512415218257667
 GameObject:
   m_ObjectHideFlags: 0
@@ -557,6 +559,8 @@ MonoBehaviour:
   fill: {fileID: 4819492936597695019}
   minAngle: 225
   maxAngle: 315
+  startingRotation: 0.135
+  angle: 0
 --- !u!1 &2414970059502026774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1075,6 +1079,8 @@ MonoBehaviour:
   fill: {fileID: 3956698224956594825}
   minAngle: 225
   maxAngle: 315
+  startingRotation: 0.135
+  angle: 0
 --- !u!1 &3523682178680571026
 GameObject:
   m_ObjectHideFlags: 0
@@ -1688,7 +1694,7 @@ MonoBehaviour:
   m_FillMethod: 4
   m_FillAmount: 0
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!1 &5405772546503746277
@@ -2738,7 +2744,7 @@ MonoBehaviour:
   m_FillMethod: 4
   m_FillAmount: 0
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!1 &7234534824935831646
@@ -2794,6 +2800,8 @@ MonoBehaviour:
   fill: {fileID: 1902899053235424175}
   minAngle: 225
   maxAngle: 315
+  startingRotation: 0.135
+  angle: 0
 --- !u!1 &7262640427752837012
 GameObject:
   m_ObjectHideFlags: 0
@@ -3504,7 +3512,7 @@ MonoBehaviour:
   m_FillMethod: 4
   m_FillAmount: 0
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!1 &8944884873580032636
@@ -3654,7 +3662,7 @@ MonoBehaviour:
   m_FillMethod: 4
   m_FillAmount: 0
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 2
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!1 &9053434025316381371
