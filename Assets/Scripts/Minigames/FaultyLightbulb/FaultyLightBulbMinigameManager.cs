@@ -1,21 +1,25 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 
-public class FaultyLightBulbMinigameManager : MonoBehaviour
+public class FaultyLightBulbMinigameManager : Minigame
 {
     [SerializeField] private GameObject[] stages;
+
+    [SerializeField] private Image switchImage;
+    [SerializeField] private Sprite switchOnSprite;
+    [SerializeField] private Sprite switchOffSprite;
+
+    [Header("State")]
+    [SerializeField] private bool isActive = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Stage1();
+       ActivateStage(0);
     }
 
     // Update is called once per frame
     void Update()
-    {
-
-    }
-    public void Stage1()
     {
 
     }
@@ -33,21 +37,21 @@ public class FaultyLightBulbMinigameManager : MonoBehaviour
         }        
     }
 
-    public void Stage2()
+    public void Stage1()
     {
-
+        switchImage.sprite = switchOffSprite;
+        ActivateStage(1);
     }
-    public void Stage3()
-    {
-
-    }
-    public void Stage4()
-    {
-
-    }
+   
     public void Stage5()
     {
+        switchImage.sprite = switchOnSprite;
+        isActive = false;
 
+        EventBus.OnMinigameCompleted();
+        StopMinigame();
+
+        gameObject.SetActive(false);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -56,6 +60,7 @@ public class FaultyLightBulbMinigameManager : MonoBehaviour
             collision.gameObject.GetComponent<FaultyLightBulbController>().ResetPosition();
         }
     }
+    
     
   
 }

@@ -15,7 +15,6 @@ public class OvenKnobController : MonoBehaviour, IDragHandler, IPointerDownHandl
     [Header("Done")]
     [SerializeField] private float doneThreshold = 0.5f;
 
-    private Vector3 mousePos;
     private Vector2 centerPoint;
     private bool isDone;
     private OvenManager manager;
