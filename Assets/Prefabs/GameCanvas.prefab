@@ -1101,8 +1101,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -90.01776, y: 0}
-  m_SizeDelta: {x: 133.5415, y: 133.5448}
+  m_AnchoredPosition: {x: -90.018, y: 0}
+  m_SizeDelta: {x: 148.49, y: 148.4931}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9186599339783771428
 CanvasRenderer:
@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 72b4ccf17a429e042945e87bff352be1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c41ee84e5e89b5c4fac13d9006204c47, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4309,6 +4309,19 @@ MonoBehaviour:
   burnRate: 1
   gameOverPanel: {fileID: 0}
   victoryPanel: {fileID: 0}
+  houseSprite: {fileID: 2896791946853335254}
+  houseIconLow: {fileID: 21300000, guid: b4b6bdffa2800c743a8049f8a4c3a93f, type: 3}
+  houseIconMid: {fileID: 21300000, guid: 9082a08b6cb64694b97cb02e771ebdd7, type: 3}
+  houseIconHigh: {fileID: 21300000, guid: c41ee84e5e89b5c4fac13d9006204c47, type: 3}
+  healthHigh:
+    serializedVersion: 2
+    rgba: 4281391206
+  healthMid:
+    serializedVersion: 2
+    rgba: 4280005607
+  healthLow:
+    serializedVersion: 2
+    rgba: 4279973607
 --- !u!1 &8083280958588554944
 GameObject:
   m_ObjectHideFlags: 0

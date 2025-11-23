@@ -1,6 +1,8 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -12,7 +14,13 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI houseHealthValueText, timerValueText;
     private bool isBurning = false;
     private HazardManager hazardManager;
-    [SerializeField] private GameObject gameOverPanel,victoryPanel;
+    [SerializeField] private GameObject gameOverPanel, victoryPanel, houseSprite;
+
+    [Header("House Health Visuals")]
+    [SerializeField] private Sprite houseIconLow;
+    [SerializeField] private Sprite houseIconMid, houseIconHigh;
+    [SerializeField] private Color32 healthHigh, healthMid, healthLow;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void OnEnable()
     {
@@ -69,6 +77,7 @@ public class GameManager : MonoBehaviour
         houseHealthValueText.SetText(((int)houseHealth) + "%");
         timerValueText.SetText(FormatTime(currentTime));
 
+        ManageHouseVisuals();
 
     }
 
@@ -107,4 +116,23 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(currentScene.name);
     }
 
+    private void ManageHouseVisuals()
+    {
+        var houseSpriteComponent = houseSprite.GetComponent<Image>();
+        if (houseHealth >= 50f)
+        {
+            houseSpriteComponent.sprite = houseIconHigh;
+            houseHealthValueText.color = healthHigh;
+        }
+        else if (houseHealth >= 20 && houseHealth < 50)
+        {
+            houseSpriteComponent.sprite = houseIconMid;
+            houseHealthValueText.color = healthMid;
+        }
+        else
+        {
+            houseSpriteComponent.sprite = houseIconLow;
+            houseHealthValueText.color = healthLow;
+        }
+    }
 }
