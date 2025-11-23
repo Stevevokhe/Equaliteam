@@ -303,7 +303,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 359}
+  m_AnchoredPosition: {x: 0, y: 237}
   m_SizeDelta: {x: 1512.1763, y: 329.8609}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1604528265891240271
@@ -334,7 +334,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Badass Game Name
+  m_text: Home Hazard Hero
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0e55b7c3db1d820478e3213a60765036, type: 2}
   m_sharedMaterial: {fileID: 4036793430644987808, guid: 0e55b7c3db1d820478e3213a60765036, type: 2}
