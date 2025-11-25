@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class ObjectRotator : MonoBehaviour
 {
-    [SerializeField] private Transform objectToRotate;
     [SerializeField] private Vector3 _rotation;
 
     void Update()
