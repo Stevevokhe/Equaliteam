@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0f;
             victoryPanel.SetActive(true);
+            victoryPanel.GetComponent<EndgameStatsManager>().GetGameoverStats(((int)houseHealth));
         }
         //House health decreasing calculations
         if (houseHealth<=0)
@@ -66,6 +67,7 @@ public class GameManager : MonoBehaviour
             //Game Over
             Time.timeScale = 0f;
             gameOverPanel.SetActive(true);
+            gameOverPanel.GetComponent<EndgameStatsManager>().GetGameoverStats(((int)houseHealth));
         } else if (isBurning)
         {
             houseHealth -= burnRate* nrOfBurningHazards * Time.deltaTime;
