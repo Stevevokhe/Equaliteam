@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 7683434506224481417}
   - component: {fileID: 3460078919934497792}
   - component: {fileID: 7428512260498770332}
+  - component: {fileID: 8298378132654228963}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -269,6 +270,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8298378132654228963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785515937301099311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488dead773949ac44a122bc52024c335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.1
+  scaleSpeed: 10
 --- !u!1 &2294478389801965946
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,6 +686,7 @@ GameObject:
   - component: {fileID: 7289790180288363782}
   - component: {fileID: 4623149003320758634}
   - component: {fileID: 1726324396681999057}
+  - component: {fileID: 2854951279123092567}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -792,6 +808,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2854951279123092567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8048046267651112943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488dead773949ac44a122bc52024c335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.1
+  scaleSpeed: 10
 --- !u!1 &8513660014087168557
 GameObject:
   m_ObjectHideFlags: 0

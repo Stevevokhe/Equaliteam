@@ -292,6 +292,7 @@ GameObject:
   - component: {fileID: 1726634350956971420}
   - component: {fileID: 1179838706082956467}
   - component: {fileID: 9143075899086252723}
+  - component: {fileID: 6787853182699855556}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -401,6 +402,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6787853182699855556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089226603198201085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488dead773949ac44a122bc52024c335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.1
+  scaleSpeed: 10
 --- !u!1 &1112817335623198991
 GameObject:
   m_ObjectHideFlags: 0
@@ -2666,6 +2681,7 @@ GameObject:
   - component: {fileID: 7593641418578304925}
   - component: {fileID: 3560852147996627860}
   - component: {fileID: 7663075184931188198}
+  - component: {fileID: 3020297094850451827}
   m_Layer: 5
   m_Name: BackToMenuButton
   m_TagString: Untagged
@@ -2787,6 +2803,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3020297094850451827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4497838038526301860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488dead773949ac44a122bc52024c335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.1
+  scaleSpeed: 10
 --- !u!1 &4642879778686675159
 GameObject:
   m_ObjectHideFlags: 0
@@ -3574,6 +3604,7 @@ GameObject:
   - component: {fileID: 2294586130669100721}
   - component: {fileID: 5738418636129860888}
   - component: {fileID: 4938426776244943498}
+  - component: {fileID: 6065488507977650288}
   m_Layer: 5
   m_Name: OptionsButton
   m_TagString: Untagged
@@ -3707,6 +3738,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6065488507977650288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6863055715816375172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488dead773949ac44a122bc52024c335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.1
+  scaleSpeed: 10
 --- !u!1 &6987392898013629375
 GameObject:
   m_ObjectHideFlags: 0
@@ -4538,6 +4583,7 @@ GameObject:
   - component: {fileID: 3801185883943010280}
   - component: {fileID: 317477829412590441}
   - component: {fileID: 7957874997754590908}
+  - component: {fileID: 3870597945041462105}
   m_Layer: 5
   m_Name: BackToMenuButton
   m_TagString: Untagged
@@ -4659,6 +4705,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3870597945041462105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7315038434256927904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488dead773949ac44a122bc52024c335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.1
+  scaleSpeed: 10
 --- !u!1 &7435208329147969714
 GameObject:
   m_ObjectHideFlags: 0
@@ -4807,6 +4867,7 @@ GameObject:
   - component: {fileID: 5650851178169591364}
   - component: {fileID: 506179413449979591}
   - component: {fileID: 3706431604341798023}
+  - component: {fileID: 5343124845392198289}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -4928,6 +4989,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5343124845392198289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7469325426438942169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488dead773949ac44a122bc52024c335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.1
+  scaleSpeed: 10
 --- !u!1 &7906676970995994701
 GameObject:
   m_ObjectHideFlags: 0
@@ -5077,6 +5152,7 @@ GameObject:
   - component: {fileID: 562718038532701529}
   - component: {fileID: 5735341119045548097}
   - component: {fileID: 3188443718141991040}
+  - component: {fileID: 2342899507190224573}
   m_Layer: 5
   m_Name: ResumeButton
   m_TagString: Untagged
@@ -5186,6 +5262,20 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2342899507190224573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8105313412909478290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488dead773949ac44a122bc52024c335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.1
+  scaleSpeed: 10
 --- !u!1 &8395863125710555001
 GameObject:
   m_ObjectHideFlags: 0
@@ -5749,6 +5839,7 @@ GameObject:
   - component: {fileID: 5016831136766341029}
   - component: {fileID: 8120982193822186474}
   - component: {fileID: 8449221362779639194}
+  - component: {fileID: 4372905785424220027}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -5870,6 +5961,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &4372905785424220027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8735470855285800526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488dead773949ac44a122bc52024c335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.1
+  scaleSpeed: 10
 --- !u!1 &8775717545585427178
 GameObject:
   m_ObjectHideFlags: 0
