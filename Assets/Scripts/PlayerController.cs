@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     private float horizontalInput, verticalInput;
 
     Rigidbody rb;
-    private Animator animator;
+    [SerializeField] private Animator animator;
 
     [SerializeField] private HazardBase interactedHazard;
 
@@ -46,7 +46,6 @@ public class PlayerController : MonoBehaviour
         cam = FindAnyObjectByType<Camera>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-        animator = GetComponent<Animator>();
     }
 
 
@@ -85,10 +84,21 @@ public class PlayerController : MonoBehaviour
         if (rb.linearVelocity.magnitude < 0.01f)
         {
             animator.SetBool("IsMoving", false);
+            animator.SetBool("IsMovingCarrying", false);
+            
+            
         }
         else
         {
-            animator.SetBool("IsMoving", true);
+            if (currentTool != PlayerTool.None)
+            {
+                animator.SetBool("IsMoving", true);
+            }
+            else
+            {
+                animator.SetBool("IsMovingCarrying", true);
+            } 
+            
         }
     }
 
@@ -119,6 +129,7 @@ public class PlayerController : MonoBehaviour
 
     public void DropPlayerTool()
     {
+        currentTool = PlayerTool.None;
         Destroy(CarriedToolObject);
         Instantiate(CurrentToolSO.InteractableToolObject, transform.position, Quaternion.identity);
     }

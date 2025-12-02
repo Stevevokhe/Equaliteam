@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -12,18 +13,25 @@ public class GameManager : MonoBehaviour
     [SerializeField] float burnRate;
     private float currentTime,nrOfBurningHazards;
     private TextMeshProUGUI houseHealthValueText, timerValueText;
-    private bool isBurning = false;
+    private bool isBurning,isPaused = false;
     private HazardManager hazardManager;
-    [SerializeField] private GameObject gameOverPanel, victoryPanel, houseSprite;
+    [SerializeField] private GameObject gameOverPanel, victoryPanel, houseSprite,pausePanel,optionsPanel;
 
     [Header("House Health Visuals")]
     [SerializeField] private Sprite houseIconLow;
     [SerializeField] private Sprite houseIconMid, houseIconHigh;
     [SerializeField] private Color32 healthHigh, healthMid, healthLow;
 
+    private PlayerInput playerInput;
+    private InputAction pauseAction;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void OnEnable()
     {
+        playerInput = GameObject.FindAnyObjectByType<PlayerController>().GetComponent<PlayerInput>();
+        pauseAction = playerInput.actions["Pause"];
+        pauseAction.performed += PauseByInput;
+        playerInput.enabled =true;
         hazardManager = FindAnyObjectByType<HazardManager>();
         hazardManager.OnHouseStartedBurning += StartBurning;
         hazardManager.OnHouseStoppedBurning += StopBurning;
@@ -36,7 +44,7 @@ public class GameManager : MonoBehaviour
     }
 
     void Start()
-    {
+    {        
         houseHealthValueText = GameObject.Find("HouseHealthValue").GetComponent<TextMeshProUGUI>();
         timerValueText = GameObject.Find("TimerValue").GetComponent<TextMeshProUGUI>();
         currentTime = gameEndTime;
@@ -116,6 +124,22 @@ public class GameManager : MonoBehaviour
     {
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
+    }
+
+    public void Pause()
+    {
+        isPaused = !isPaused;
+
+        pausePanel.SetActive(isPaused);
+        optionsPanel.SetActive(false);
+
+        Time.timeScale = isPaused ? 0f : 1f;
+        
+    }
+
+    public void PauseByInput(InputAction.CallbackContext ctx)
+    {
+        Pause();
     }
 
     private void ManageHouseVisuals()

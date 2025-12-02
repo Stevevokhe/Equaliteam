@@ -31,7 +31,7 @@ public class UIHoverScale : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         transform.localScale = Vector3.Lerp(
             transform.localScale,
             targetScale,
-            Time.deltaTime * scaleSpeed
+            Time.unscaledDeltaTime * scaleSpeed
         );
     }
 }
