@@ -6,10 +6,10 @@ using UnityEngine.Windows;
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
-    public float moveSpeed;
+    [SerializeField] private float moveSpeed;
     private bool dashing;
-
-    public float groundDrag;
+    [SerializeField] private float rotationSpeed = 10f;
+    [SerializeField] private float groundDrag;
 
     Camera cam;
 
@@ -24,11 +24,11 @@ public class PlayerController : MonoBehaviour
     private InputAction moveAction;
 
     private Vector3 moveDirection;
-    private float horizontalInput, verticalInput;
+    private float horizontalInput, verticalInput, idleAnimationCounter;
 
     Rigidbody rb;
     [SerializeField] private Animator animator;
-
+    [SerializeField] private float idleAnimationTriggerTime;
     [SerializeField] private HazardBase interactedHazard;
 
     [Header("Tools")]
@@ -46,6 +46,9 @@ public class PlayerController : MonoBehaviour
         cam = FindAnyObjectByType<Camera>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+        currentTool = PlayerTool.None;
+        animator.SetBool("IsCarrying", false);
+        animator.SetBool("IsMoving", false);
     }
 
 
@@ -81,25 +84,32 @@ public class PlayerController : MonoBehaviour
             rb.linearDamping = 0;
         }
 
+        //If we are not moving
         if (rb.linearVelocity.magnitude < 0.01f)
         {
             animator.SetBool("IsMoving", false);
-            animator.SetBool("IsMovingCarrying", false);
-            
-            
-        }
-        else
-        {
-            if (currentTool != PlayerTool.None)
-            {
-                animator.SetBool("IsMoving", true);
+            //And have nothing in our hands
+            if (currentTool == PlayerTool.None) {
+                idleAnimationCounter += Time.deltaTime;
             }
-            else
+            //And the idle animation time has passed
+            if (idleAnimationCounter >= idleAnimationTriggerTime)
             {
-                animator.SetBool("IsMovingCarrying", true);
-            } 
-            
+                //Play a random emotion animation 
+                var animName = Random.value > 0.5f ? "IsSurprised" : "IsScared";
+                animator.SetTrigger(animName);
+                idleAnimationCounter = 0;
+                //And add a delay until the next one
+                idleAnimationCounter -= idleAnimationTriggerTime * 3;
+            }
+        } else
+        {
+            animator.SetBool("IsMoving", true);
+            idleAnimationCounter = 0;
         }
+
+        
+        
     }
 
     private void FixedUpdate()
@@ -124,12 +134,15 @@ public class PlayerController : MonoBehaviour
     public void PickUpPlayerTool(PlayerToolSO toolSO)
     {
         CurrentToolSO = toolSO;
+        currentTool = CurrentToolSO.PlayerTool;
+        animator.SetBool("IsCarrying", true);
         CarriedToolObject = Instantiate(CurrentToolSO.CarriedToolObject, playerToolTransform);
     }
 
     public void DropPlayerTool()
     {
         currentTool = PlayerTool.None;
+        animator.SetBool("IsCarrying", false);
         Destroy(CarriedToolObject);
         Instantiate(CurrentToolSO.InteractableToolObject, transform.position, Quaternion.identity);
     }
@@ -174,7 +187,10 @@ public class PlayerController : MonoBehaviour
 
         if (moveDirection.magnitude > 0.1f)
         {
-            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force);
+            rb.AddForce(moveDirection.normalized * moveSpeed, ForceMode.Force);
+
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
     }
 
