@@ -8,7 +8,7 @@ public class OvenKnobController : MonoBehaviour, IDragHandler, IPointerDownHandl
     [SerializeField] private Transform handle;
     [SerializeField] private Image fill;
 
-    [Header("Limits (0..360). 0 = top")]
+    [Header("Limits")]
     [SerializeField] private float minAngle;
     [SerializeField] private float maxAngle;
 
@@ -18,14 +18,28 @@ public class OvenKnobController : MonoBehaviour, IDragHandler, IPointerDownHandl
     private Vector2 centerPoint;
     private bool isDone;
     private OvenManager manager;
-    
+
+    private void OnEnable()
+    {
+        EventBus.OnKnobReseted += InitiateKnobs;
+    }
+
+    private void OnDisable()
+    {
+        EventBus.OnKnobReseted -= InitiateKnobs;
+    }
+
     private void Awake()
     {
         manager = GameObject.FindAnyObjectByType<OvenManager>();
-        
+        InitiateKnobs();
+    }
+
+    public void InitiateKnobs()
+    {
         float randomAngle = Random.Range(20f, 300f);
         handle.localEulerAngles = new Vector3(0f, 0f, -randomAngle);
-        fill.fillAmount = randomAngle/360;
+        fill.fillAmount = randomAngle / 360;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -76,6 +90,7 @@ public class OvenKnobController : MonoBehaviour, IDragHandler, IPointerDownHandl
             if (diffToZero <= doneThreshold)
             {
                 isDone = true;
+                handle.localEulerAngles = new Vector3(0f, 0f, minAngle);
                 manager.KnobCompleted();
             }
             

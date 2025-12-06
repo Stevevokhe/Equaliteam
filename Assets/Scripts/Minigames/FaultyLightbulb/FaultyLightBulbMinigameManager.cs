@@ -12,16 +12,20 @@ public class FaultyLightBulbMinigameManager : Minigame
 
     [Header("State")]
     [SerializeField] private bool isActive = false;
+
+    private GameObject bulbStartSnapPoint, bulbToPick;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
        ActivateStage(0);
+        bulbStartSnapPoint = GameObject.Find("BulbStartSnapPoint");
+        bulbToPick = GameObject.Find("BulbToPick");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ResetPuzzle()
     {
-
+        switchImage.sprite = switchOnSprite;
+        bulbToPick.transform.position = bulbStartSnapPoint.transform.position;
     }
 
     public void ActivateStage(int stageNumber)
@@ -42,7 +46,8 @@ public class FaultyLightBulbMinigameManager : Minigame
         switchImage.sprite = switchOffSprite;
         ActivateStage(1);
     }
-   
+
+
     public void Stage5()
     {
         switchImage.sprite = switchOnSprite;
@@ -60,7 +65,13 @@ public class FaultyLightBulbMinigameManager : Minigame
             collision.gameObject.GetComponent<FaultyLightBulbController>().ResetPosition();
         }
     }
-    
-    
-  
+
+    public override void StopMinigame()
+    {
+        isActive = false;
+        EventBus.OnMinigameCompleted();
+        gameObject.SetActive(false);
+
+    }
+
 }

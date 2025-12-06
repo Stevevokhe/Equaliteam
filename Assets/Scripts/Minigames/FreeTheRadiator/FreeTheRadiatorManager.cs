@@ -24,7 +24,7 @@ public class FreeTheRadiatorManager : Minigame
     public override void StopMinigame()
     {
         isActive=false;
-        //EventBus.OnMinigameCompleted();
+        EventBus.OnMinigameCompleted();
         gameObject.SetActive(false);
         
     }

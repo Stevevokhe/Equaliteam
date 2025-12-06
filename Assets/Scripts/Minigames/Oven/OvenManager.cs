@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class OvenManager : Minigame
 {
-    [Header("Reference")]
-    [SerializeField] GameObject fixButton;
     [Header("State")]
     [SerializeField] private bool isActive = false;
 
@@ -11,6 +9,7 @@ public class OvenManager : Minigame
     public override void StartMinigame()
     {
         isActive = true;
+        EventBus.InvokeOnKnobReseted();
     }
 
     public void KnobCompleted()
@@ -19,7 +18,15 @@ public class OvenManager : Minigame
         if( knobsToTurnOff >= 4)
         {
             //TODO do effects & shit
-            fixButton.SetActive(true);
+            StopMinigame();
         }
+    }
+
+    public override void StopMinigame()
+    {
+        isActive = false;
+        EventBus.OnMinigameCompleted();
+        gameObject.SetActive(false);
+
     }
 }

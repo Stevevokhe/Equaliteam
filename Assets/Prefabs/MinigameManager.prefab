@@ -47,4 +47,16 @@ MonoBehaviour:
   minigameUIList:
   - MinigameName: SmackTheRat
     MinigameObject: {fileID: 0}
+  - MinigameName: MrWhiskers
+    MinigameObject: {fileID: 0}
+  - MinigameName: SaunaMinigame
+    MinigameObject: {fileID: 0}
+  - MinigameName: FlipTheFuse
+    MinigameObject: {fileID: 0}
+  - MinigameName: FireplaceFlick
+    MinigameObject: {fileID: 0}
+  - MinigameName: Oven
+    MinigameObject: {fileID: 0}
+  - MinigameName: FreeTheRadiator
+    MinigameObject: {fileID: 0}
   interactableUI: {fileID: 0}

@@ -10,7 +10,7 @@ public class FaultyLightBulbController : MonoBehaviour, IDragHandler, IPointerDo
     [Header("References")]
     [SerializeField] private Transform handle;
     [SerializeField] private Image fill;
-
+    
     [Header("Limits (0..360). 0 = top")]
     [SerializeField] private float minAngle;
     [SerializeField] private float maxAngle;
@@ -23,19 +23,19 @@ public class FaultyLightBulbController : MonoBehaviour, IDragHandler, IPointerDo
     [Header("Write 2")]
     [SerializeField] private int screwedStage;
 
-    private Vector2 centerPoint;
     private bool isDone;
     private FaultyLightBulbMinigameManager manager;
+
+    private Vector2 centerPoint;
 
     private void Awake()
     {
         manager = GameObject.FindAnyObjectByType<FaultyLightBulbMinigameManager>();
-
+        
         handle.localEulerAngles = new Vector3(0f, 0f, -startAngle);
         originalRotation = gameObject.transform.rotation;
-        fill.fillAmount = startAngle/360;
+        fill.fillAmount = 1;
     }
-
     public void OnPointerDown(PointerEventData eventData)
     {
         // Calculate center of knob in screen coordinates
@@ -86,7 +86,6 @@ public class FaultyLightBulbController : MonoBehaviour, IDragHandler, IPointerDo
                 isDone = true;
                 manager.ActivateStage(screwedStage);
             }
-
         }
 
 
