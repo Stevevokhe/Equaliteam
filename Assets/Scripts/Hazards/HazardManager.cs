@@ -61,7 +61,6 @@ public class HazardManager : MonoBehaviour
         Hazards = new List<HazardBase>(sceneHazards);
         Debug.Log($"HazardManager initialized with {Hazards.Count} hazards");
 
-        // Initialize hazards with random delays up to maxActiveHazards
         InitializeHazardsWithRandomDelays();
     }
 
@@ -93,7 +92,6 @@ public class HazardManager : MonoBehaviour
             }
         }
 
-        // Ensure we maintain the desired number of active hazards
         MaintainActiveHazardCount();
     }
 
@@ -103,10 +101,8 @@ public class HazardManager : MonoBehaviour
 
         if (inactiveHazards.Count > 0)
         {
-            // Randomly select an inactive hazard to trigger
             HazardBase replacementHazard = inactiveHazards[UnityEngine.Random.Range(0, inactiveHazards.Count)];
 
-            // Trigger immediately
             TriggerHazard(replacementHazard);
 
             if (showDebugInfo)
@@ -599,7 +595,4 @@ public class HazardManager : MonoBehaviour
     {
         OnHouseStoppedBurning?.Invoke();
     }
-
-
-    
 }
