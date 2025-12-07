@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["Move"];
         cam = FindAnyObjectByType<Camera>();
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponentInChildren<Rigidbody>();
         rb.freezeRotation = true;
         currentTool = PlayerTool.None;
         animator.SetBool("IsCarrying", false);
@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void Update()
+    private void FixedUpdate()
     {
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.3f, whatIsGround);
 
@@ -72,10 +72,12 @@ public class PlayerController : MonoBehaviour
         {
             if (Mathf.Abs(horizontalInput) < 0.1f && Mathf.Abs(verticalInput) < 0.1f)
             {
+                animator.SetBool("IsMoving", false);
                 rb.linearDamping = groundDrag * 2f;
             }
             else
             {
+                animator.SetBool("IsMoving", true);
                 rb.linearDamping = groundDrag;
             }
         }
@@ -87,7 +89,6 @@ public class PlayerController : MonoBehaviour
         //If we are not moving
         if (rb.linearVelocity.magnitude < 0.01f)
         {
-            animator.SetBool("IsMoving", false);
             //And have nothing in our hands
             if (currentTool == PlayerTool.None) {
                 idleAnimationCounter += Time.deltaTime;
@@ -104,21 +105,13 @@ public class PlayerController : MonoBehaviour
             }
         } else
         {
-            animator.SetBool("IsMoving", true);
             idleAnimationCounter = 0;
         }
 
-        
-        
-    }
-
-    private void FixedUpdate()
-    {
         if (canMove)
         {
             MovePlayer();
         }
-
     }
 
     public void SetHazardRangeBool(bool value)
