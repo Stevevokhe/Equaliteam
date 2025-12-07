@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     private TextMeshProUGUI houseHealthValueText, timerValueText;
     private bool isBurning,isPaused = false;
     private HazardManager hazardManager;
-    [SerializeField] private GameObject gameOverPanel, victoryPanel, houseSprite,pausePanel,optionsPanel;
+    [SerializeField] private GameObject endGamePanel, houseSprite,pausePanel,optionsPanel;
 
     [Header("House Health Visuals")]
     [SerializeField] private Sprite houseIconLow;
@@ -49,8 +49,8 @@ public class GameManager : MonoBehaviour
         timerValueText = GameObject.Find("TimerValue").GetComponent<TextMeshProUGUI>();
         currentTime = gameEndTime;
         Time.timeScale = 1f;
-        gameOverPanel.SetActive(false);
-        victoryPanel.SetActive(false);  
+        endGamePanel.SetActive(false);
+        endGamePanel.SetActive(false);  
     }
 
     // Update is called once per frame
@@ -66,16 +66,16 @@ public class GameManager : MonoBehaviour
         if(currentTime <= 0)
         {
             Time.timeScale = 0f;
-            victoryPanel.SetActive(true);
-            victoryPanel.GetComponent<EndgameStatsManager>().GetGameoverStats(((int)houseHealth));
+            endGamePanel.SetActive(true);
+            endGamePanel.GetComponent<EndgameStatsManager>().GetGameoverStats(((int)houseHealth));
         }
         //House health decreasing calculations
         if (houseHealth<=0)
         {
             //Game Over
             Time.timeScale = 0f;
-            gameOverPanel.SetActive(true);
-            gameOverPanel.GetComponent<EndgameStatsManager>().GetGameoverStats(((int)houseHealth));
+            endGamePanel.SetActive(true);
+            endGamePanel.GetComponent<EndgameStatsManager>().GetGameoverStats(((int)houseHealth));
         } else if (isBurning)
         {
             houseHealth -= burnRate* nrOfBurningHazards * Time.deltaTime;
