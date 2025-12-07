@@ -20750,7 +20750,7 @@ MonoBehaviour:
   puddleRenderer: {fileID: 2974825027347101391}
   tubeGrowTime: 0.5
   puddleDelay: 0.1
-  puddleGrowTime: 10
+  puddleGrowTime: 8
   tubeOpacity: 1
   puddleOpacity: 0.95
 --- !u!1 &7009216757319908599

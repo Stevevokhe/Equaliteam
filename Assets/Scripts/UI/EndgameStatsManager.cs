@@ -21,7 +21,8 @@ public class EndgameStatsManager : MonoBehaviour
             // Repair Cost
             System.Random random = new System.Random();
 
-            int houseCost = random.Next(100000, 200000); // Random price of a cottage in Finland
+            //int houseCost = random.Next(100000, 200000); // Random price of a cottage in Finland
+            int houseCost = 150000; // Set price for a cottage
             int repairCost = houseCost * houseDamage / 100;
 
             RepairCostTextObj.text = $"Repair cost is {repairCost}€";

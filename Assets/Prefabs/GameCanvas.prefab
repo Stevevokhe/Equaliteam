@@ -234,6 +234,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2443665242446005609}
+  - {fileID: 1253194061495823729}
   - {fileID: 6947822735280967740}
   m_Father: {fileID: 1255428013569979373}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -318,7 +319,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 30, y: -228.5}
-  m_SizeDelta: {x: 380, y: 100}
+  m_SizeDelta: {x: 380, y: 151.6401}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1726634350956971420
 CanvasRenderer:
@@ -404,7 +405,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4561776102874675374}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: Pause
+        m_MethodName: BackToMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -593,7 +594,7 @@ GameObject:
   - component: {fileID: 6226476184519938744}
   - component: {fileID: 1536298386786540632}
   m_Layer: 5
-  m_Name: CloseOptionsButton
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -612,11 +613,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8763280208963757980}
-  m_Father: {fileID: 6947822735280967740}
+  m_Father: {fileID: 4219375876721751232}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 294.32477, y: -290}
+  m_AnchoredPosition: {x: 436.45657, y: -794}
   m_SizeDelta: {x: 380, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9023135752805811240
@@ -2029,7 +2030,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Close
+  m_text: Back
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0e55b7c3db1d820478e3213a60765036, type: 2}
   m_sharedMaterial: {fileID: 4036793430644987808, guid: 0e55b7c3db1d820478e3213a60765036, type: 2}
@@ -2038,8 +2039,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281282537
-  m_fontColor: {r: 0.9150943, g: 0.18560876, b: 0.18560876, a: 1}
+    rgba: 4278233599
+  m_fontColor: {r: 1, g: 0.6627451, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2314,7 +2315,6 @@ RectTransform:
   m_Children:
   - {fileID: 2535644451006705056}
   - {fileID: 5212803218559204646}
-  - {fileID: 1253194061495823729}
   m_Father: {fileID: 4219375876721751232}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4401,7 +4401,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Leave
+  m_text: 'Main
+
+    Menu'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0e55b7c3db1d820478e3213a60765036, type: 2}
   m_sharedMaterial: {fileID: 4036793430644987808, guid: 0e55b7c3db1d820478e3213a60765036, type: 2}
@@ -4428,7 +4430,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
+  m_fontSize: 75.8
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6079,7 +6081,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SFX
+  m_text: Sounds
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0e55b7c3db1d820478e3213a60765036, type: 2}
   m_sharedMaterial: {fileID: 4036793430644987808, guid: 0e55b7c3db1d820478e3213a60765036, type: 2}
