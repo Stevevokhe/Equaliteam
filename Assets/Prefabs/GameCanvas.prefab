@@ -6625,6 +6625,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7472358726763303445, guid: 9c6ac580d88c3874d8e5bbe2db752abc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8443452722891661184, guid: 9c6ac580d88c3874d8e5bbe2db752abc, type: 3}
       propertyPath: m_Name
       value: MiniGames
