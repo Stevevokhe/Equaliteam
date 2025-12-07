@@ -8216,7 +8216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6cf5b4641bb3d5479d63459d8531a6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEndTime: 30
+  gameEndTime: 180
   houseHealth: 100
   burnRate: 1
   endGamePanel: {fileID: 3953568651762647250}
