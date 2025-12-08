@@ -37,25 +37,33 @@ public class EndgameStatsManager : MonoBehaviour
     {
         if (!statsShown)
         {
-            System.Random random = new System.Random();
-
             // Generate Case ID
-            caseID = Random.Range(0, 10000000);
-            Debug.Log("ID generated");
+            caseID = Random.Range(0, 100000000);
 
 
             // ============= SUMMARY =============
             // Generate Property Value
             houseCost = Random.Range(200000, 300000); // Random price of a cottage in Finland
-            Debug.Log("Property value generated");
 
             // Generate House damage
             houseDamage = 100 - houseHealth;
-            Debug.Log("House damage generated");
 
             // Generate Repair Cost
-            repairCost = houseCost * houseDamage / 100;
-            Debug.Log("Repair cost generated");
+            if (houseDamage <= 0)
+            {
+                repairCost = 0;
+            }
+            else
+            {
+                float damageFactor = houseDamage / 100f;
+
+                float minPct = 0.05f;   // 5%
+                float maxPct = 0.35f;   // 35%
+
+                float repairPct = Mathf.Lerp(minPct, maxPct, damageFactor);
+
+                repairCost = houseCost * repairPct;
+            }
 
             // ============= DAMAGE BREAKDOWN =============
             // Generate breakdown values
@@ -64,19 +72,26 @@ public class EndgameStatsManager : MonoBehaviour
             electricalDamage = repairCost * 0.09f;
             structuralDamage = repairCost * 0.22f;
             cleanUp = repairCost * 0.15f;
-            Debug.Log("Damage breakdown generated");
 
-            // ============= ADDITIONAL CHARGES =============
-            // Generate 2 additional charges
-            extraCharge1 = ChooseRandomString(additionalCharges);
-            extraCharge2 = ChooseRandomString(additionalCharges, extraCharge1);
-            Debug.Log("Charges generated");
+            if (repairCost > 0)
+            {
+                // ============= ADDITIONAL CHARGES =============
+                extraCharge1 = ChooseRandomString(additionalCharges);
+                extraCharge2 = ChooseRandomString(additionalCharges, extraCharge1);
 
-            // ============= DISCOUNTS =============
-            // Generate 2 discounts
-            discount1 = ChooseRandomString(discounts);
-            discount2 = ChooseRandomString(discounts, discount1);
-            Debug.Log("Discounts generated");
+                // ============= DISCOUNTS =============
+                discount1 = ChooseRandomString(discounts);
+                discount2 = ChooseRandomString(discounts, discount1);
+            }
+            else
+            {
+                // No charges when no damage
+                extraCharge1 = "";
+                extraCharge2 = "";
+
+                discount1 = "";
+                discount2 = "";
+            }
 
 
 
@@ -129,7 +144,7 @@ public class EndgameStatsManager : MonoBehaviour
             else return "Catastrophic event"; // 81 - 100
         }
 
-    IEnumerator TypeTextCoroutine(string fullText, TMPro.TextMeshProUGUI textField, float delay)
+    IEnumerator TypeTextCoroutine(string fullText, TextMeshProUGUI textField, float delay)
         {
             textField.text = "";
 
@@ -142,14 +157,12 @@ public class EndgameStatsManager : MonoBehaviour
 
     IEnumerator FillAllFieldsInOrder()
         {
-        Debug.Log("Filling stats stared");
 
             // ID
             yield return StartCoroutine(TypeTextCoroutine(
                caseID.ToString("D8"),
                caseIDTextObj,
                typingSpeed));
-        Debug.Log("ID displayed");
 
         // ============= SUMMARY =============
         // Property Value
@@ -169,7 +182,6 @@ public class EndgameStatsManager : MonoBehaviour
                 "€" + repairCost.ToString("N0", fiCulture),
                 repairCostTextObj,
                 typingSpeed));
-        Debug.Log("Summary displayed");
 
         // ============= DAMAGE BREAKDOWN =============
         yield return StartCoroutine(TypeTextCoroutine(
@@ -192,24 +204,31 @@ public class EndgameStatsManager : MonoBehaviour
             "€" + cleanUp.ToString("N0", fiCulture),
             cleanUpTextObj, typingSpeed));
 
-        Debug.Log("Breakdown displayed");
 
         // ============= ADDITIONAL CHARGES =============
-        yield return StartCoroutine(TypeTextCoroutine(
-            extraCharge1, extraCharge1TextObj, typingSpeed));
+        if (repairCost > 0)
+        {
+            yield return StartCoroutine(TypeTextCoroutine(extraCharge1, extraCharge1TextObj, typingSpeed));
+            yield return StartCoroutine(TypeTextCoroutine(extraCharge2, extraCharge2TextObj, typingSpeed));
+        }
+        else
+        {
+            extraCharge1TextObj.text = "";
+            extraCharge2TextObj.text = "";
+        }
 
-        yield return StartCoroutine(TypeTextCoroutine(
-            extraCharge2, extraCharge2TextObj, typingSpeed));
-
-        Debug.Log("Charges displayed");
 
         // ============= DISCOUNTS =============
-        yield return StartCoroutine(TypeTextCoroutine(
-            discount1, discount1TextObj, typingSpeed));
-
-        yield return StartCoroutine(TypeTextCoroutine(
-            discount2, discount2TextObj, typingSpeed));
-        Debug.Log("Discounts displayed");
+        if (repairCost > 0)
+        {
+            yield return StartCoroutine(TypeTextCoroutine(discount1, discount1TextObj, typingSpeed));
+            yield return StartCoroutine(TypeTextCoroutine(discount2, discount2TextObj, typingSpeed));
+        }
+        else
+        {
+            discount1TextObj.text = "";
+            discount2TextObj.text = "";
+        }
 
         StartCoroutine(ShowButtons());
         }
@@ -237,12 +256,28 @@ public class EndgameStatsManager : MonoBehaviour
         cleanUpTextObj.text = "€" + cleanUp.ToString("N0", fiCulture);
 
         // ============= ADDITIONAL CHARGES =============
-        extraCharge1TextObj.text = extraCharge1;
-        extraCharge2TextObj.text = extraCharge2;
+        if (repairCost > 0)
+        {
+            extraCharge1TextObj.text = extraCharge1;
+            extraCharge2TextObj.text = extraCharge2;
+        }
+        else
+        {
+            discount1TextObj.text = "";
+            discount2TextObj.text = "";
+        }
 
         // ============= DISCOUNTS =============
-        discount1TextObj.text = discount1;
-        discount2TextObj.text = discount2;
+        if (repairCost > 0)
+        {
+            discount1TextObj.text = discount1;
+            discount2TextObj.text = discount2;
+        }
+        else
+        {
+            discount1TextObj.text = "";
+            discount2TextObj.text = "";
+        }
 
         StartCoroutine(ShowButtons());
     }
