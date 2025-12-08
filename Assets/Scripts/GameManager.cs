@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] float burnRate;
     private float currentTime,nrOfBurningHazards;
     private TextMeshProUGUI houseHealthValueText, timerValueText;
-    private bool isBurning,isPaused = false;
+    private bool isBurning,isPaused,gameEnded = false;
     private HazardManager hazardManager;
     [SerializeField] private GameObject endGamePanel, houseSprite,pausePanel,optionsPanel;
 
@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0f;
             endGamePanel.SetActive(true);
+            gameEnded = true;
             endGamePanel.GetComponent<EndgameStatsManager>().GetGameoverStats(((int)houseHealth));
         }
         //House health decreasing calculations
@@ -75,6 +76,7 @@ public class GameManager : MonoBehaviour
             //Game Over
             Time.timeScale = 0f;
             endGamePanel.SetActive(true);
+            gameEnded = true;
             endGamePanel.GetComponent<EndgameStatsManager>().GetGameoverStats(((int)houseHealth));
         } else if (isBurning)
         {
@@ -128,12 +130,15 @@ public class GameManager : MonoBehaviour
 
     public void Pause()
     {
-        isPaused = !isPaused;
+        if (!gameEnded)
+        {
+            isPaused = !isPaused;
 
-        pausePanel.SetActive(isPaused);
-        optionsPanel.SetActive(false);
+            pausePanel.SetActive(isPaused);
+            optionsPanel.SetActive(false);
 
-        Time.timeScale = isPaused ? 0f : 1f;
+            Time.timeScale = isPaused ? 0f : 1f;
+        }
         
     }
 
