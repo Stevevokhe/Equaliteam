@@ -9,10 +9,18 @@ public class EndgameStatsManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI caseIDTextObj, propertyValueTextObj, houseDamageTextObj, RepairCostTextObj, primaryHazardTextObj;
     [SerializeField] private GameObject restartButton, BackToMenuButton;
     private bool statsShown = false;
+    private bool skipRequested;
     [SerializeField] private float typingSpeed = 0.1f;
 
     private int caseID, houseCost, houseDamage, repairCost;
 
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape)) 
+        {
+            SkipTypingAnimation();
+        }
+    }
     public void GetGameoverStats(int houseHealth)
     {
         if (!statsShown)
@@ -34,8 +42,9 @@ public class EndgameStatsManager : MonoBehaviour
             StartCoroutine(FillAllFieldsInOrder());
             statsShown = true;
         }
+    }
 
-        string AssessDamageSeverity(int damage)
+    string AssessDamageSeverity(int damage)
         {
             if (damage == 0)
             {
@@ -56,7 +65,7 @@ public class EndgameStatsManager : MonoBehaviour
             else return "Catastrophic event";
         }
 
-        IEnumerator TypeTextCoroutine(string fullText, TMPro.TextMeshProUGUI textField, float delay)
+    IEnumerator TypeTextCoroutine(string fullText, TMPro.TextMeshProUGUI textField, float delay)
         {
             textField.text = "";
 
@@ -67,7 +76,7 @@ public class EndgameStatsManager : MonoBehaviour
             }
         }
 
-        IEnumerator FillAllFieldsInOrder()
+    IEnumerator FillAllFieldsInOrder()
         {
             // ID
             yield return StartCoroutine(TypeTextCoroutine(
@@ -96,7 +105,24 @@ public class EndgameStatsManager : MonoBehaviour
             StartCoroutine(ShowButtons());
         }
 
-        IEnumerator ShowButtons()
+    void RevealScoresNow()
+    {
+        // ID
+        caseIDTextObj.text = caseID.ToString("D8");
+
+        // Property Value
+        propertyValueTextObj.text = $"€{houseCost}";
+
+        // House Damage
+        houseDamageTextObj.text = $"{houseDamage}% ({AssessDamageSeverity(houseDamage)})";
+
+        // Repair Cost
+        RepairCostTextObj.text = $"€{repairCost}";
+
+        ShowButtons();
+    }
+
+    IEnumerator ShowButtons()
         {
             yield return new WaitForSecondsRealtime(.3f);
             restartButton.SetActive(true);
@@ -105,5 +131,14 @@ public class EndgameStatsManager : MonoBehaviour
             BackToMenuButton.SetActive(true);
         }
 
+    void SkipTypingAnimation()
+    {
+        if(skipRequested) return;
+
+        skipRequested = true;
+
+        StopAllCoroutines();
+
+        RevealScoresNow();
     }
 }
