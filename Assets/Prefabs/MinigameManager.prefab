@@ -49,7 +49,7 @@ MonoBehaviour:
     MinigameObject: {fileID: 0}
   - MinigameName: MrWhiskers
     MinigameObject: {fileID: 0}
-  - MinigameName: SaunaMinigame
+  - MinigameName: Sauna
     MinigameObject: {fileID: 0}
   - MinigameName: FlipTheFuse
     MinigameObject: {fileID: 0}
@@ -58,5 +58,9 @@ MonoBehaviour:
   - MinigameName: Oven
     MinigameObject: {fileID: 0}
   - MinigameName: FreeTheRadiator
+    MinigameObject: {fileID: 0}
+  - MinigameName: GrillDrop
+    MinigameObject: {fileID: 0}
+  - MinigameName: FaultyLightbulbs
     MinigameObject: {fileID: 0}
   interactableUI: {fileID: 0}

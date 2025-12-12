@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviour
 
         if (UnityEngine.Input.GetKeyUp(KeyCode.E) && !inRangeOfHazard && CarriedToolObject != null)
         {
+            Debug.Log("trying to drop the tool");
             DropPlayerTool();
         }
 
@@ -151,10 +152,13 @@ public class PlayerController : MonoBehaviour
 
     public void DropPlayerTool()
     {
-        currentTool = PlayerTool.None;
+        Debug.LogError("commensing tool drop");
         animator.SetBool("IsCarrying", false);
-        Destroy(CarriedToolObject);
         Instantiate(CurrentToolSO.InteractableToolObject, transform.position, Quaternion.identity);
+        currentTool = PlayerTool.None;
+        Destroy(CarriedToolObject);
+
+        Debug.Log("Tool dropped hopefully");
     }
 
     public PlayerTool GetCurrentTool()
