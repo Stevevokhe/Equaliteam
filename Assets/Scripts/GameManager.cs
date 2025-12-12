@@ -80,6 +80,8 @@ public class GameManager : MonoBehaviour
             endGamePanel.SetActive(true);
             gameEnded = true;
             endGamePanel.GetComponent<EndgameStatsManager>().GetGameoverStats(((int)houseHealth));
+            // Animation handling
+            healthAnimator.SetBool("HealthDropping", false);
         } else if (isBurning)
         {
             houseHealth -= burnRate* nrOfBurningHazards * Time.deltaTime;
