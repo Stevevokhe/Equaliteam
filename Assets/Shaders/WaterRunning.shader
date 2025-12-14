@@ -123,9 +123,7 @@ Shader "Custom/WaterTubeUnlit"
                 // Fresnel edge term
                 float fresnel = pow(1.0 - saturate(dot(n, v)), _EdgeSoftness);
 
-                // ===== Base blue water (UV-based flow) =====
-                // Assume cylinder UV.y goes from bottom (0) to top (1).
-                // _FlowDirection = 1 -> one way, -1 -> reversed (set in inspector).
+                // ===== Base blue water =====
                 float2 flowUV = float2(
                     i.uv.x * _NoiseScale,
                     i.uv.y * _NoiseScale + _Time.y * _NoiseSpeed * _FlowDirection
@@ -138,12 +136,11 @@ Shader "Custom/WaterTubeUnlit"
                 float brightness = 1.0 + _BrightnessVariation * baseCentered;
                 baseCol *= brightness;
 
-                // slight vertical fade (mostly solid)
+                // slight vertical fade
                 float vFade = lerp(1.0 - _VerticalFade, 1.0, saturate(i.uv.y));
                 baseCol *= vFade;
 
-                // ===== Caustics: intersection of 2 UV noises =====
-                // Both scroll along +FlowDirection.
+                // ===== Caustics =====
 
                 float2 cUV1 = float2(
                     i.uv.x * _CausticScale1,

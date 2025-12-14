@@ -17,10 +17,11 @@ public class FaultyLightBulbController : MonoBehaviour, IDragHandler, IPointerDo
     [SerializeField] private float startAngle;
     [SerializeField] private float finishAngle;
 
-    [Header("Done")]
+    [Header("Completion")]
     [SerializeField] private float doneThreshold = 0.5f;
+    [SerializeField] private bool isReversed = false;
 
-    [Header("Write 2")]
+    [Header("Stage to continue to")]
     [SerializeField] private int screwedStage;
 
     private bool isDone;
@@ -78,7 +79,14 @@ public class FaultyLightBulbController : MonoBehaviour, IDragHandler, IPointerDo
 
             // Apply rotation: we negate the angle because Unity's positive Z rotation is CCW.
             handle.localEulerAngles = new Vector3(0f, 0f, -clamped);
-            fill.fillAmount = clamped / 360;
+            if (isReversed)
+            {
+                fill.fillAmount = 1-clamped / 360;
+            }
+            else {
+                fill.fillAmount = clamped / 360;
+            }
+            
             // Debug "done" when near zero (considering wrap)
             float diffToZero = Mathf.Min(Mathf.Abs(Mathf.DeltaAngle(clamped, finishAngle)), Mathf.Abs(Mathf.DeltaAngle(clamped, 360f)));
             if (diffToZero <= doneThreshold)
