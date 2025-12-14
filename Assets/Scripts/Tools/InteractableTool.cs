@@ -38,6 +38,11 @@ public class InteractableTool : MonoBehaviour
         {
             playerController = other.GetComponentInParent<PlayerController>();
             playerInZone = true;
+            if (interactionText == null) 
+            {
+                interactionText = GameObject.Find("GameCanvas");
+                interactionText = interactionText.transform.Find("InteractText").gameObject;
+            }
             interactionText.SetActive(true);
         }
     }

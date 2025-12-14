@@ -22,6 +22,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Sprite houseIconMid, houseIconHigh;
     [SerializeField] private Color32 healthHigh, healthMid, healthLow;
 
+    [SerializeField] private Animator healthAnimator;
+
     private PlayerInput playerInput;
     private InputAction pauseAction;
 
@@ -78,6 +80,8 @@ public class GameManager : MonoBehaviour
             endGamePanel.SetActive(true);
             gameEnded = true;
             endGamePanel.GetComponent<EndgameStatsManager>().GetGameoverStats(((int)houseHealth));
+            // Animation handling
+            healthAnimator.SetBool("HealthDropping", false);
         } else if (isBurning)
         {
             houseHealth -= burnRate* nrOfBurningHazards * Time.deltaTime;
@@ -97,6 +101,9 @@ public class GameManager : MonoBehaviour
     {
         nrOfBurningHazards++;
         isBurning = true;
+
+        // Animation handling
+        healthAnimator.SetBool("HealthDropping", true);
     }
 
     public void StopBurning()
@@ -106,6 +113,9 @@ public class GameManager : MonoBehaviour
         {
             nrOfBurningHazards = 0;
             isBurning = false;
+
+            // Animation handling
+            healthAnimator.SetBool("HealthDropping", false);
         }
         
     }

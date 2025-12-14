@@ -39,6 +39,8 @@ public class PlayerController : MonoBehaviour
 
     private bool inRangeOfHazard = false;
 
+    [SerializeField] private ParticleSystem dustParticleSystem;
+
     private void Start()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -58,6 +60,7 @@ public class PlayerController : MonoBehaviour
 
         if (UnityEngine.Input.GetKeyUp(KeyCode.E) && !inRangeOfHazard && CarriedToolObject != null)
         {
+            Debug.Log("trying to drop the tool");
             DropPlayerTool();
         }
 
@@ -74,16 +77,31 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetBool("IsMoving", false);
                 rb.linearDamping = groundDrag * 2f;
+
+                if (dustParticleSystem != null && dustParticleSystem.isPlaying)
+                {
+                    dustParticleSystem.Stop();
+                }
             }
             else
             {
                 animator.SetBool("IsMoving", true);
                 rb.linearDamping = groundDrag;
+
+                if (dustParticleSystem != null && !dustParticleSystem.isPlaying)
+                {
+                    dustParticleSystem.Play();
+                }
             }
         }
         else
         {
             rb.linearDamping = 0;
+
+            if (dustParticleSystem != null && dustParticleSystem.isPlaying)
+            {
+                dustParticleSystem.Stop();
+            }
         }
 
         //If we are not moving
@@ -134,10 +152,13 @@ public class PlayerController : MonoBehaviour
 
     public void DropPlayerTool()
     {
-        currentTool = PlayerTool.None;
+        Debug.LogError("commensing tool drop");
         animator.SetBool("IsCarrying", false);
-        Destroy(CarriedToolObject);
         Instantiate(CurrentToolSO.InteractableToolObject, transform.position, Quaternion.identity);
+        currentTool = PlayerTool.None;
+        Destroy(CarriedToolObject);
+
+        Debug.Log("Tool dropped hopefully");
     }
 
     public PlayerTool GetCurrentTool()
