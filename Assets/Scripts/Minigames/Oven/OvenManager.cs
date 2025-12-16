@@ -4,7 +4,7 @@ public class OvenManager : Minigame
 {
     [Header("State")]
     [SerializeField] private bool isActive = false;
-
+    [SerializeField] private OvenKnobController[] knobs;
     public int knobsToTurnOff;
     public override void StartMinigame()
     {
