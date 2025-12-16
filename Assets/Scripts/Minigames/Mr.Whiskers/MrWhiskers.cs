@@ -127,7 +127,6 @@ public class MrWhiskers : Minigame
     {
         if (!isActive || hasReachedDestination)
             return;
-        EventBus.InvokeOnSFXCalled(SFXType.CatPurr);
         isBeingDragged = true;
         MoveTowardTarget(playerTargetPoint.position, playerPushForce * dragMultiplier * Time.deltaTime);
     }

@@ -276,7 +276,7 @@ public class FlipTheFuse : Minigame
         Debug.Log("=== PLAYER WINS! ===");
 
         isActive = false;
-
+        EventBus.InvokeOnSFXCalled(SFXType.SuccesfullPuzzleCompleted);
         EventBus.OnMinigameCompleted();
 
         foreach (GameObject switchObj in switchObjects)

@@ -185,6 +185,7 @@ public class FireplaceFlick : Minigame
         if (!isActive) return;
 
         Debug.Log("All objects flipped to target - Player Wins!");
+        EventBus.InvokeOnSFXCalled(SFXType.SuccesfullPuzzleCompleted);
         EventBus.OnMinigameCompleted();
 
         foreach (GameObject obj in clickableObjects)

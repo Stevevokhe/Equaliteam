@@ -152,7 +152,6 @@ public class SaunaMinigame : Minigame
     {
         if (!isActive) return;
 
-        // Update flying off objects
         foreach (GameObject obj in draggableObjects)
         {
             if (obj == null) continue;
@@ -162,7 +161,6 @@ public class SaunaMinigame : Minigame
                 RectTransform rect = objectRectTransforms[obj];
                 rect.position += Vector3.up * flyOffSpeed * Time.deltaTime;
 
-                // Check if out of bounds (using screen space)
                 float screenY = GetScreenY(rect);
                 if (screenY > Screen.height + outOfBoundsY)
                 {
@@ -174,16 +172,13 @@ public class SaunaMinigame : Minigame
                     }
                 }
             }
-            // Update returning objects
             else if (objectsReturning[obj] && objectRectTransforms.ContainsKey(obj))
             {
                 RectTransform rect = objectRectTransforms[obj];
                 Vector3 targetPosition = initialPositions[obj];
 
-                // Smoothly move back to original position
                 rect.position = Vector3.Lerp(rect.position, targetPosition, returnSpeed * Time.deltaTime);
 
-                // Check if close enough to snap to final position
                 if (Vector3.Distance(rect.position, targetPosition) < 0.5f)
                 {
                     rect.position = targetPosition;
@@ -193,7 +188,6 @@ public class SaunaMinigame : Minigame
             }
         }
 
-        // Check if all objects are cleared AND out of bounds
         CheckWinCondition();
     }
 
@@ -202,15 +196,13 @@ public class SaunaMinigame : Minigame
         if (!isActive || objectsCleared[obj]) return;
 
         currentlyDraggedObject = obj;
-        objectsReturning[obj] = false; // Stop returning if was in progress
+        objectsReturning[obj] = false;
 
-        // Store the starting screen Y position for line-crossing detection
         if (objectRectTransforms.ContainsKey(obj))
         {
             previousScreenY[obj] = GetScreenY(objectRectTransforms[obj]);
         }
 
-        // Calculate offset between mouse and object center
         RectTransform rect = objectRectTransforms[obj];
         Vector2 localPoint;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
@@ -237,7 +229,6 @@ public class SaunaMinigame : Minigame
 
         RectTransform rect = objectRectTransforms[obj];
 
-        // Convert pointer position to canvas local position
         Vector2 localPoint;
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(
             canvas.transform as RectTransform,
@@ -245,23 +236,19 @@ public class SaunaMinigame : Minigame
             uiCamera,
             out localPoint))
         {
-            // Apply the drag offset and set position
             rect.position = canvas.transform.TransformPoint(localPoint + dragOffsets[obj]);
 
-            // Get current screen Y position
             float currentScreenY = GetScreenY(rect);
 
-            // Robust line-crossing detection (in screen space)
             if (HasCrossedThreshold(previousScreenY[obj], currentScreenY))
             {
-                // Take control away from player and start flying off
                 objectsCleared[obj] = true;
                 objectsFlyingOff[obj] = true;
-                currentlyDraggedObject = null; // Release control
+                currentlyDraggedObject = null;
                 Debug.Log($"{obj.name} crossed threshold at Y={currentScreenY:F1} (threshold={yThreshold}) - flying off!");
             }
 
-            // Update previous screen Y position for next frame
+
             previousScreenY[obj] = currentScreenY;
         }
     }
@@ -270,12 +257,12 @@ public class SaunaMinigame : Minigame
     {
         if (!isActive) return;
 
-        // Only process if this object is still being dragged
+
         if (currentlyDraggedObject == obj)
         {
             currentlyDraggedObject = null;
 
-            // If object was dropped without crossing threshold, return it to original position
+
             if (!objectsCleared[obj])
             {
                 objectsReturning[obj] = true;
@@ -283,11 +270,8 @@ public class SaunaMinigame : Minigame
             }
         }
     }
-
-    // Robust line-crossing detection (in screen space coordinates)
     private bool HasCrossedThreshold(float previousY, float currentY)
     {
-        // Check if the object crossed from below to above the threshold
         bool wasBelowThreshold = previousY < yThreshold;
         bool isAboveThreshold = currentY >= yThreshold;
 
@@ -296,14 +280,12 @@ public class SaunaMinigame : Minigame
 
     private void CheckWinCondition()
     {
-        // Check if all objects are cleared AND out of bounds
         bool allClearedAndGone = true;
 
         foreach (GameObject obj in draggableObjects)
         {
             if (obj == null) continue;
 
-            // Object must be both cleared and out of bounds
             if (!objectsCleared[obj] || !objectsOutOfBounds[obj])
             {
                 allClearedAndGone = false;
@@ -319,12 +301,12 @@ public class SaunaMinigame : Minigame
 
     private void OnPlayerWins()
     {
-        if (!isActive) return; // Prevent multiple calls
+        if (!isActive) return;
 
         Debug.Log("All objects cleared and off screen - Player Wins!");
+        EventBus.InvokeOnSFXCalled(SFXType.SuccesfullPuzzleCompleted);
         EventBus.OnMinigameCompleted();
 
-        // Reset all objects to initial positions
         foreach (GameObject obj in draggableObjects)
         {
             if (obj == null) continue;
@@ -335,41 +317,34 @@ public class SaunaMinigame : Minigame
                 previousScreenY[obj] = GetScreenY(objectRectTransforms[obj]);
             }
 
-            obj.SetActive(true); // Reactivate objects that were deactivated
+            obj.SetActive(true);
         }
 
         gameObject.SetActive(false);
         StopMinigame();
     }
 
-    // Enhanced gizmo visualization - now draws HORIZONTAL line
     private void OnDrawGizmos()
     {
         if (!showThresholdLine) return;
 
         Gizmos.color = thresholdLineColor;
-
-        // Draw a thick horizontal line at the Y threshold
-        // Make it visible across the entire screen width
-        float screenWidth = Screen.width > 0 ? Screen.width : 1920f; // Fallback for editor
+        float screenWidth = Screen.width > 0 ? Screen.width : 1920f;
         Vector3 leftPoint = new Vector3(-200f, yThreshold, 0);
         Vector3 rightPoint = new Vector3(screenWidth + 200f, yThreshold, 0);
 
-        // Draw multiple lines to make it thicker and more visible
         for (int i = -2; i <= 2; i++)
         {
             Vector3 offset = new Vector3(0, i * 0.5f, 0);
             Gizmos.DrawLine(leftPoint + offset, rightPoint + offset);
         }
 
-        // Draw markers along the line
         for (float x = 0; x < screenWidth; x += 100f)
         {
             Vector3 markerCenter = new Vector3(x, yThreshold, 0);
             Gizmos.DrawWireSphere(markerCenter, 20f);
         }
 
-        // Draw label at the center
 #if UNITY_EDITOR
         UnityEditor.Handles.color = thresholdLineColor;
         UnityEditor.Handles.Label(
@@ -385,21 +360,16 @@ public class SaunaMinigame : Minigame
         );
 #endif
     }
-
-    // Draw the threshold line in the Game view as well (for runtime debugging)
     private void OnGUI()
     {
         if (!showThresholdLine || !isActive) return;
 
-        // Draw the line in screen space
         Color oldColor = GUI.color;
         GUI.color = thresholdLineColor;
 
-        // Draw horizontal line
         Rect lineRect = new Rect(0, Screen.height - yThreshold - 2, Screen.width, 4);
         GUI.DrawTexture(lineRect, Texture2D.whiteTexture);
 
-        // Draw label
         GUIStyle labelStyle = new GUIStyle(GUI.skin.label);
         labelStyle.normal.textColor = thresholdLineColor;
         labelStyle.fontSize = 16;

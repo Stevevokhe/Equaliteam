@@ -25,6 +25,7 @@ public class OvenManager : Minigame
 
     public override void StopMinigame()
     {
+        EventBus.InvokeOnSFXCalled(SFXType.SuccesfullPuzzleCompleted);
         isActive = false;
         EventBus.OnMinigameCompleted();
         gameObject.SetActive(false);
