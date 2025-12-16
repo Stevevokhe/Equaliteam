@@ -95,7 +95,73 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Minigame_Sauna_asset_0
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 515
+        width: 193
+        height: 225
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a1941c972174a8468a83e87ed0c3cd8
+      internalID: 1960069827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minigame_Sauna_asset_1
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 111
+        width: 613
+        height: 811
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 562c3e1e030edd14aae11b8ae7e15986
+      internalID: -137525515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minigame_Sauna_asset_2
+      rect:
+        serializedVersion: 2
+        x: 1494
+        y: 515
+        width: 193
+        height: 223
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc1a4f35342d2034094a29baaf0998ab
+      internalID: 413879005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -109,7 +175,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Minigame_Sauna_asset_0: 1960069827
+      Minigame_Sauna_asset_1: -137525515
+      Minigame_Sauna_asset_2: 413879005
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

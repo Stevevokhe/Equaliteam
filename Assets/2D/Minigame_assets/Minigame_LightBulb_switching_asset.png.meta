@@ -95,7 +95,139 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Minigame_LightBulb_switching_asset_0
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 793
+        width: 313
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c85adcf8ece530646b4eaae3bde90e2a
+      internalID: -191604041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minigame_LightBulb_switching_asset_1
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 793
+        width: 313
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5450799b0d92445478cae10cae8c94c4
+      internalID: 1161874232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minigame_LightBulb_switching_asset_2
+      rect:
+        serializedVersion: 2
+        x: 1010
+        y: 844
+        width: 154
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e137038db2e142d448cadbc6fc857468
+      internalID: 8945702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minigame_LightBulb_switching_asset_3
+      rect:
+        serializedVersion: 2
+        x: 1284
+        y: 844
+        width: 154
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 789eeaedd7a52974d9176c83da863391
+      internalID: 1829295610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minigame_LightBulb_switching_asset_4
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 772
+        width: 267
+        height: 290
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dcaa6549ef0a9140b513859ea9ae3ad
+      internalID: -783355150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minigame_LightBulb_switching_asset_5
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 34
+        width: 1846
+        height: 587
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb293182e15073f4baff6d8b2c5935f8
+      internalID: -1836660337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -109,7 +241,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Minigame_LightBulb_switching_asset_0: -191604041
+      Minigame_LightBulb_switching_asset_1: 1161874232
+      Minigame_LightBulb_switching_asset_2: 8945702
+      Minigame_LightBulb_switching_asset_3: 1829295610
+      Minigame_LightBulb_switching_asset_4: -783355150
+      Minigame_LightBulb_switching_asset_5: -1836660337
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
