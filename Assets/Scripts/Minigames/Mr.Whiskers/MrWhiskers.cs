@@ -26,7 +26,7 @@ public class MrWhiskers : Minigame
     private bool hasReachedDestination = false;
     private float currentPushTimer = 0f;
     private float pushDuration = 0.2f;
-    private Vector3 initialPosition; // Store the starting position
+    private Vector3 initialPosition;
 
     private void Awake()
     {
@@ -39,35 +39,29 @@ public class MrWhiskers : Minigame
         rectTransform = whiskersObject.GetComponent<RectTransform>();
         canvas = whiskersObject.GetComponentInParent<Canvas>();
 
-        // Store initial position
         initialPosition = rectTransform.position;
 
-        // Set up EventTrigger on the UI object
         SetupEventTrigger();
     }
 
     private void SetupEventTrigger()
     {
-        // Get or add EventTrigger component
         eventTrigger = whiskersObject.GetComponent<EventTrigger>();
         if (eventTrigger == null)
         {
             eventTrigger = whiskersObject.AddComponent<EventTrigger>();
         }
 
-        // Add PointerDown event
         EventTrigger.Entry pointerDownEntry = new EventTrigger.Entry();
         pointerDownEntry.eventID = EventTriggerType.PointerDown;
         pointerDownEntry.callback.AddListener((data) => { OnPointerDown((PointerEventData)data); });
         eventTrigger.triggers.Add(pointerDownEntry);
 
-        // Add Drag event
         EventTrigger.Entry dragEntry = new EventTrigger.Entry();
         dragEntry.eventID = EventTriggerType.Drag;
         dragEntry.callback.AddListener((data) => { OnDrag((PointerEventData)data); });
         eventTrigger.triggers.Add(dragEntry);
 
-        // Add PointerUp event
         EventTrigger.Entry pointerUpEntry = new EventTrigger.Entry();
         pointerUpEntry.eventID = EventTriggerType.PointerUp;
         pointerUpEntry.callback.AddListener((data) => { OnPointerUp((PointerEventData)data); });
@@ -76,6 +70,7 @@ public class MrWhiskers : Minigame
 
     public override void StartMinigame()
     {
+        EventBus.InvokeOnSFXCalled(SFXType.CatCrowl);
         isActive = true;
         hasReachedDestination = false;
         isBeingDragged = false;
@@ -132,7 +127,7 @@ public class MrWhiskers : Minigame
     {
         if (!isActive || hasReachedDestination)
             return;
-
+        EventBus.InvokeOnSFXCalled(SFXType.CatPurr);
         isBeingDragged = true;
         MoveTowardTarget(playerTargetPoint.position, playerPushForce * dragMultiplier * Time.deltaTime);
     }
@@ -150,6 +145,7 @@ public class MrWhiskers : Minigame
 
     private void OnPlayerWins()
     {
+        EventBus.InvokeOnSFXCalled(SFXType.CatMeow2);
         Debug.Log("Player pushed object to target - Player Wins!");
         EventBus.OnMinigameCompleted();
 

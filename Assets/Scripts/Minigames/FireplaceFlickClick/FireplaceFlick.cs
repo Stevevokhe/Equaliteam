@@ -66,6 +66,8 @@ public class FireplaceFlick : Minigame
 
     public override void StartMinigame()
     {
+        EventBus.InvokeOnSFXCalled(SFXType.FrameStartBurn);
+
         isActive = true;
 
         foreach (GameObject obj in clickableObjects)
@@ -146,6 +148,7 @@ public class FireplaceFlick : Minigame
         if (!isActive) return;
         if (objectsClicked[obj]) return;
 
+        EventBus.InvokeOnSFXCalled(SFXType.DraggingSomething);
         objectsClicked[obj] = true;
         objectsFlipping[obj] = true;
 

@@ -7,9 +7,11 @@ public class EventBus
     public static Action OnMinigameCompleted;
     public static Action OnKnobReseted;
     public static Action OnFaultyLightBulbReseted;
+    public static Action<SFXType> OnSFXCalled;
 
     public static void InvokeOnMinigameCalled(string minigameName) => OnMinigameCalled?.Invoke(minigameName);
     public static void InvokeOnMinigameCompleted() => OnMinigameCompleted?.Invoke();
     public static void InvokeOnKnobReseted() => OnKnobReseted?.Invoke();
     public static void InvokeOnFaultyLightBulbReseted() => OnFaultyLightBulbReseted?.Invoke();
+    public static void InvokeOnSFXCalled(SFXType type) => OnSFXCalled?.Invoke(type);
 }

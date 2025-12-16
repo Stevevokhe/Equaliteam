@@ -1,7 +1,9 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.Windows;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,15 +12,21 @@ public class PlayerController : MonoBehaviour
     private bool dashing;
     [SerializeField] private float rotationSpeed = 10f;
     [SerializeField] private float groundDrag;
-
+    [SerializeField] List<SFXType> stepSounds = new List<SFXType>();
     Camera cam;
+
+    [SerializeField] float stepInterval = 0.5f;
+    private float stepTimer = 0f;
+    private int currentStepIndex = 0;
 
     [Header("Ground Check")]
     public float playerHeight;
     public LayerMask whatIsGround;
     bool grounded;
-  
+
     public bool canMove;
+
+    bool isMoving = false;
 
     private PlayerInput playerInput;
     private InputAction moveAction;
@@ -76,6 +84,7 @@ public class PlayerController : MonoBehaviour
             if (Mathf.Abs(horizontalInput) < 0.1f && Mathf.Abs(verticalInput) < 0.1f)
             {
                 animator.SetBool("IsMoving", false);
+                isMoving = false;
                 rb.linearDamping = groundDrag * 2f;
 
                 if (dustParticleSystem != null && dustParticleSystem.isPlaying)
@@ -86,6 +95,8 @@ public class PlayerController : MonoBehaviour
             else
             {
                 animator.SetBool("IsMoving", true);
+                isMoving = true;
+
                 rb.linearDamping = groundDrag;
 
                 if (dustParticleSystem != null && !dustParticleSystem.isPlaying)
@@ -104,24 +115,21 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //If we are not moving
         if (rb.linearVelocity.magnitude < 0.01f)
         {
-            //And have nothing in our hands
-            if (currentTool == PlayerTool.None) {
+            if (currentTool == PlayerTool.None)
+            {
                 idleAnimationCounter += Time.deltaTime;
             }
-            //And the idle animation time has passed
             if (idleAnimationCounter >= idleAnimationTriggerTime)
             {
-                //Play a random emotion animation 
                 var animName = Random.value > 0.5f ? "IsSurprised" : "IsScared";
                 animator.SetTrigger(animName);
                 idleAnimationCounter = 0;
-                //And add a delay until the next one
                 idleAnimationCounter -= idleAnimationTriggerTime * 3;
             }
-        } else
+        }
+        else
         {
             idleAnimationCounter = 0;
         }
@@ -130,6 +138,33 @@ public class PlayerController : MonoBehaviour
         {
             MovePlayer();
         }
+
+        if (grounded && isMoving)
+        {
+            stepTimer += Time.fixedDeltaTime;
+
+            if (stepTimer >= stepInterval)
+            {
+                PlayNextStep();
+                stepTimer = 0f; // or -= stepInterval to prevent drift
+            }
+        }
+        else
+        {
+            stepTimer = 0f; // Reset when not moving
+        }
+
+    }
+
+    private void PlayNextStep()
+    {
+        if (stepSounds.Count == 0) return;
+
+        EventBus.InvokeOnSFXCalled(stepSounds[currentStepIndex]);
+
+        currentStepIndex++;
+        if (currentStepIndex >= stepSounds.Count)
+            currentStepIndex = 0;
     }
 
     public void SetHazardRangeBool(bool value)
