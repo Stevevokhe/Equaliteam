@@ -5,30 +5,30 @@ using UnityEngine.UI;
 public class FaultyLightBulbMinigameManager : Minigame
 {
     [SerializeField] private GameObject[] stages;
-    [SerializeField] private FaultyLightBulbController bulb1, bulb2;
+    [SerializeField] private FaultyLightBulbController turningBulb1, turningBulb2;
     [SerializeField] private Image switchImage;
     [SerializeField] private Sprite switchOnSprite;
     [SerializeField] private Sprite switchOffSprite;
+    [SerializeField] private GameObject bulbStartSnapPoint, bulbToPick;
+
 
     [Header("State")]
     [SerializeField] private bool isActive = false;
 
-    private GameObject bulbStartSnapPoint, bulbToPick;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
        ActivateStage(0);
-        bulbStartSnapPoint = GameObject.Find("BulbStartSnapPoint");
-        bulbToPick = GameObject.Find("BulbToPick");
     }
 
     public override void StartMinigame()
-    {
+    {        
         isActive = true;
         ActivateStage(0);
-        bulb1.ResetBulb();
-        bulb2.ResetBulb();
+        turningBulb1.ResetBulb();
+        turningBulb2.ResetBulb();
         bulbToPick.transform.position = bulbStartSnapPoint.transform.position;
+        bulbToPick.GetComponent<FaultyLightBulbNewBulb>().canBeDragged = true;
     }
 
     public void ResetPuzzle()
