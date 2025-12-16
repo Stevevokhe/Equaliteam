@@ -31,6 +31,7 @@ public class GrilDropManager : Minigame
     {
         isActive = false;
         EventBus.OnMinigameCompleted();
+        EventBus.InvokeOnSFXCalled(SFXType.GrillDropped);
         gameObject.SetActive(false);
 
     }

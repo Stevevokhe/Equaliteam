@@ -268,4 +268,7 @@ MonoBehaviour:
   - type: 30
     clip: {fileID: 8300000, guid: 72d0f140706889e448f726c428d3edb9, type: 3}
     volume: 1
+  - type: 31
+    clip: {fileID: 8300000, guid: 08168a3dd786ab645817ac8f4a9add75, type: 3}
+    volume: 1
   audioSource: {fileID: 8624742826088922208}

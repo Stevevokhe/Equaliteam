@@ -972,11 +972,11 @@ RectTransform:
   m_Children:
   - {fileID: 3361350800637376599}
   - {fileID: 6833320005581463702}
+  - {fileID: 7769790930614934850}
   - {fileID: 8172969810483691232}
   - {fileID: 2010511222711183632}
   - {fileID: 2444770011117998326}
   - {fileID: 878904368506855030}
-  - {fileID: 7769790930614934850}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
