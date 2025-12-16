@@ -13,13 +13,13 @@ public class FaultyLightBulbMinigameManager : Minigame
     [Header("State")]
     [SerializeField] private bool isActive = false;
 
-    private GameObject bulbStartSnapPoint, bulbToPick;
+    [SerializeField] private GameObject bulbStartSnapPoint, bulbToPick;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
        ActivateStage(0);
         bulbStartSnapPoint = GameObject.Find("BulbStartSnapPoint");
-        bulbToPick = GameObject.Find("BulbToPick");
+        //bulbToPick = GameObject.Find("BulbToPick");
     }
 
     public override void StartMinigame()
