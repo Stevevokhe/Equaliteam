@@ -3,7 +3,17 @@ guid: 4237c2fa4cd148c4f9e354111e422f62
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "\u3010AmbCG\u3011Porcelain002"
+    second: {fileID: 2100000, guid: 4777e59eb714181479a12209effcde91, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "\u3010ShareTx\u3011Silver"
+    second: {fileID: 2100000, guid: 969ecbcbdce05834688ad960c1e73659, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
