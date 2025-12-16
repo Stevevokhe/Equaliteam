@@ -47,7 +47,7 @@ public class LeakController : MonoBehaviour
         ResetState();
     }
 
-    void ResetState()
+    public void ResetState()
     {
         // Tube starts collapsed & invisible
         waterTube.localScale = new Vector3(0f, 0f, 0f);

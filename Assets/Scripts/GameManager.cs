@@ -82,13 +82,17 @@ public class GameManager : MonoBehaviour
             endGamePanel.GetComponent<EndgameStatsManager>().GetGameoverStats(((int)houseHealth));
             // Animation handling
             healthAnimator.SetBool("HealthDropping", false);
-        } else if (isBurning)
+        }
+        else if (isBurning)
         {
             houseHealth -= burnRate* nrOfBurningHazards * Time.deltaTime;
             houseHealth = Mathf.Clamp(houseHealth, 0f, 100f);
         }
 
-
+        if (isBurning)
+            healthAnimator.SetBool("HealthDropping", true);
+        else
+            healthAnimator.SetBool("HealthDropping", false);
 
         houseHealthValueText.SetText(((int)houseHealth) + "%");
         timerValueText.SetText(FormatTime(currentTime));
@@ -101,9 +105,6 @@ public class GameManager : MonoBehaviour
     {
         nrOfBurningHazards++;
         isBurning = true;
-
-        // Animation handling
-        healthAnimator.SetBool("HealthDropping", true);
     }
 
     public void StopBurning()
@@ -113,9 +114,6 @@ public class GameManager : MonoBehaviour
         {
             nrOfBurningHazards = 0;
             isBurning = false;
-
-            // Animation handling
-            healthAnimator.SetBool("HealthDropping", false);
         }
         
     }

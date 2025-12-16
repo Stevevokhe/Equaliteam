@@ -10365,7 +10365,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8643904204475312145
 Transform:
   m_ObjectHideFlags: 0
@@ -15348,6 +15348,7 @@ GameObject:
   - component: {fileID: 4680947265444934861}
   - component: {fileID: 7045903794051126189}
   - component: {fileID: 971967584364632608}
+  - component: {fileID: 5212941002278442256}
   - component: {fileID: 3924681018562481158}
   m_Layer: 0
   m_Name: InteractableHazard
@@ -15445,7 +15446,7 @@ MonoBehaviour:
   hazardName: TestHazard
   hazardPhase: 1
   requiredTool: 0
-  smokeObject: {fileID: 3765789501458043882}
+  vFXManager: {fileID: 5212941002278442256}
   internalTimer: 0
   secondPhaseThreshold: 2
   thirdPhaseThreshold: 20
@@ -15510,6 +15511,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &5212941002278442256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5774747492385498440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97ba59f1d8d0f7440809566c92bc4c28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stage1VFX: {fileID: 3765789501458043882}
+  deactgivateAtStage2: 0
+  stage2VFX: {fileID: 8490948212472254036}
+  reqiresActivationThroughScript: 0
 --- !u!82 &3924681018562481158
 AudioSource:
   m_ObjectHideFlags: 0
