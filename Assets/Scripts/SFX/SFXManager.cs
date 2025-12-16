@@ -33,7 +33,8 @@ public enum SFXType
     UIBackButton,
     UIHover1,
     UIHover2,
-    UISelect
+    UISelect,
+    GrillDropped
 }
 
 public class SFXManager : MonoBehaviour
