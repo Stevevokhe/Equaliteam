@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 13
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -37,13 +37,13 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -52,9 +52,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -95,12 +95,254 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Minigame_Fireplace_Fire_asset_0
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 818
+        width: 688
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc3c4977d724c424da201336bf8ee472
+      internalID: 980183163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minigame_Fireplace_Fire_asset_1
+      rect:
+        serializedVersion: 2
+        x: 829
+        y: 22
+        width: 262
+        height: 963
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 869be4080c0b30b41aedb6b9636a2d20
+      internalID: 1508688131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minigame_Fireplace_Fire_asset_2
+      rect:
+        serializedVersion: 2
+        x: 1264
+        y: 535
+        width: 576
+        height: 443
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f52cf351c56aaa9438b0d391a63d8185
+      internalID: -1599774294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minigame_Fireplace_Fire_asset_3
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 639
+        width: 262
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d744a05552c498744aa207fecb720e15
+      internalID: -2085090828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minigame_Fireplace_Fire_asset_4
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 670
+        width: 41
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2977603bf100f0b4dadd5a3b02abb071
+      internalID: -726309364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minigame_Fireplace_Fire_asset_5
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 476
+        width: 184
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd303fa43d5258c4fb15aaf2fcf21602
+      internalID: -898010808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minigame_Fireplace_Fire_asset_6
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 514
+        width: 49
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 051a372a832006e4cb41b77c9f2d11e7
+      internalID: 1357311709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minigame_Fireplace_Fire_asset_7
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 282
+        width: 108
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00a3477f5746af140a0bea35f693513c
+      internalID: 697725554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minigame_Fireplace_Fire_asset_8
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 155
+        width: 99
+        height: 303
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0138cec2b33ad534ab44146637ce5e7d
+      internalID: 1359305250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minigame_Fireplace_Fire_asset_9
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 122
+        width: 281
+        height: 334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31115054598dbca4fb5a8f9612f38154
+      internalID: -434375264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minigame_Fireplace_Fire_asset_10
+      rect:
+        serializedVersion: 2
+        x: 1647
+        y: 159
+        width: 121
+        height: 263
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3895736ea34edc449bdcb783f5ee71e
+      internalID: 141062790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 7a3c71086b786b14fab76956804308ea
     internalID: 0
     vertices: []
     indices: 
@@ -109,7 +351,18 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Minigame_Fireplace_Fire_asset_0: 980183163
+      Minigame_Fireplace_Fire_asset_1: 1508688131
+      Minigame_Fireplace_Fire_asset_10: 141062790
+      Minigame_Fireplace_Fire_asset_2: -1599774294
+      Minigame_Fireplace_Fire_asset_3: -2085090828
+      Minigame_Fireplace_Fire_asset_4: -726309364
+      Minigame_Fireplace_Fire_asset_5: -898010808
+      Minigame_Fireplace_Fire_asset_6: 1357311709
+      Minigame_Fireplace_Fire_asset_7: 697725554
+      Minigame_Fireplace_Fire_asset_8: 1359305250
+      Minigame_Fireplace_Fire_asset_9: -434375264
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
