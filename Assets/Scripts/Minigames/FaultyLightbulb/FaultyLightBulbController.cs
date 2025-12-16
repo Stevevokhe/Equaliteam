@@ -52,6 +52,7 @@ public class FaultyLightBulbController : MonoBehaviour, IDragHandler, IPointerDo
         handle.localEulerAngles = new Vector3(0f, 0f, -startAngle);
         originalRotation = gameObject.transform.rotation;
         fill.fillAmount = 1;
+        isDone = false;
     }
 
     public void OnDrag(PointerEventData eventData)
