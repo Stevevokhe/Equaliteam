@@ -4,11 +4,11 @@ public class VFXManager : MonoBehaviour
 {
     [SerializeField] private GameObject stage1VFX;
 
-    [SerializeField] private bool deactgivateAtStage2; // does stage 1 vfx needs to be deactivated at stage 2?
+    [SerializeField] private bool deactivateAtStage2; // does stage 1 vfx needs to be deactivated at stage 2?
 
     [SerializeField] private GameObject stage2VFX;
 
-    [SerializeField] private bool reqiresActivationThroughScript;
+    [SerializeField] private bool requiresActivationThroughScript;
 
     //STAGE 1 VFX Activate
     public void ActivateStage1VFX()
@@ -16,30 +16,30 @@ public class VFXManager : MonoBehaviour
         if (stage1VFX != null)
         {
             stage1VFX.SetActive(true);
-            if (reqiresActivationThroughScript)
+            if (requiresActivationThroughScript)
             {
-                stage1VFX.GetComponent<LeakController>().PlayLeak();
+                var leak = stage1VFX.GetComponent<LeakController>();
+                if (leak != null) leak.PlayLeak();
+                else Debug.LogWarning("LeakController missing on Stage1VFX.");
             }
         }
         else
         {
-            Debug.Log("Stage 1 VFX missing in VFX Manager");
+            Debug.LogWarning("Stage 1 VFX missing in VFX Manager");
         }
     }
     //STAGE 1 VFX Deactivate
-    public void DeactivateStage1VFX()
+    public void DeactivateStage1VFX(bool force)
     {
 
         if (stage1VFX != null)
         {
-            if (deactgivateAtStage2) // only deactivate if it needs to be deactivated
-            {
+            if (force || deactivateAtStage2)
                 stage1VFX.SetActive(false);
-            }
         }
         else
         {
-            Debug.Log("Stage 1 VFX missing in VFX Manager");
+            Debug.LogWarning("Stage 1 VFX missing in VFX Manager");
         }
     }
 
@@ -54,9 +54,11 @@ public class VFXManager : MonoBehaviour
         }
         else
         {
-            if(!reqiresActivationThroughScript)
-            ActivateStage1VFX();
-            Debug.Log("Stage 2 VFX missing in VFX Manager");
+            if (!requiresActivationThroughScript)
+            {
+                ActivateStage1VFX();
+            }
+            Debug.LogWarning("Stage 2 VFX missing in VFX Manager");
         }
     }
     //STAGE 2 VFX Deactivate
@@ -64,26 +66,32 @@ public class VFXManager : MonoBehaviour
     {
         if (stage2VFX != null)
         {
-                stage2VFX.SetActive(false);
-        }
-        else
-        {
-            if (reqiresActivationThroughScript)
-            {
-                stage1VFX.GetComponent<LeakController>().ResetState();
-            }
-            Debug.Log("Stage 2 VFX missing in VFX Manager");
+            stage2VFX.SetActive(false);
+            return;
         }
 
+        if (requiresActivationThroughScript)
+        {
+            if (stage1VFX == null)
+            {
+                Debug.LogWarning("Stage 1 VFX missing in VFX Manager");
+                Debug.LogWarning("Stage 2 VFX missing in VFX Manager");
+                return;
+            }
+
+            var leak = stage1VFX.GetComponent<LeakController>();
+            if (leak != null) leak.ResetState();
+            else Debug.LogWarning("LeakController missing on Stage1VFX.");
+        }
+
+        Debug.LogWarning("Stage 2 VFX missing in VFX Manager");
     }
 
 
     //
     public void DeactivateAllVFX()
     {
-        deactgivateAtStage2 = true;
-        DeactivateStage1VFX();
+        DeactivateStage1VFX(true);
         DeactivateStage2VFX();
-        deactgivateAtStage2 = false;
     }
 }

@@ -267,7 +267,7 @@ public class HazardBase : MonoBehaviour
         StartPulseCoroutine();
 
         vFXManager.ActivateStage2VFX();
-        vFXManager.DeactivateStage1VFX();
+        vFXManager.DeactivateStage1VFX(false);
     }
 
     private void StartPulseCoroutine()
