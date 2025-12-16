@@ -231,12 +231,6 @@ public class HazardBase : MonoBehaviour
         }
     }
 
-    //private void SetVFX(bool objectStatus)
-    //{
-        //if (smokeObject != null)
-            //smokeObject.SetActive(objectStatus);
-    //}
-
     public virtual void TriggerFirstPhase()
     {
         Debug.Log("First phase triggered on " + gameObject);
@@ -251,7 +245,7 @@ public class HazardBase : MonoBehaviour
         SetTimerUI(true);
         StopPulseCoroutine();
 
-        vFXManager.ActivateStage1VFX();
+        vFXManager.ActivateStage2VFX();
 
         if (TimerImage != null)
         {
@@ -266,8 +260,8 @@ public class HazardBase : MonoBehaviour
         SetTimerUI(false);
         StartPulseCoroutine();
 
-        vFXManager.ActivateStage2VFX();
-        vFXManager.DeactivateStage1VFX(false);
+        vFXManager.ActivateStage3VFX();
+        vFXManager.DeactivateStage2VFX(false);
     }
 
     private void StartPulseCoroutine()

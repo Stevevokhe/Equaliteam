@@ -15523,10 +15523,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97ba59f1d8d0f7440809566c92bc4c28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage1VFX: {fileID: 3765789501458043882}
-  deactgivateAtStage2: 0
-  stage2VFX: {fileID: 8490948212472254036}
-  reqiresActivationThroughScript: 0
+  stage2VFX: {fileID: 3765789501458043882}
+  soundStage2: {fileID: 0}
+  deactivateAtStage3: 0
+  stage3VFX: {fileID: 8490948212472254036}
+  soundStage3: {fileID: 0}
+  requiresActivationThroughScript: 0
 --- !u!82 &3924681018562481158
 AudioSource:
   m_ObjectHideFlags: 0
