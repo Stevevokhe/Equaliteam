@@ -239,7 +239,7 @@ public class PullThePlug : Minigame
     {
         Debug.Log("Plug pulled out - Player Wins!");
         isUnplugged = true;
-
+        EventBus.InvokeOnSFXCalled(SFXType.DraggingSomething);
         EventBus.OnMinigameCompleted();
 
         ResetToInitialState();

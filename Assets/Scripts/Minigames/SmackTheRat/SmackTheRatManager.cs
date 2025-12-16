@@ -36,6 +36,7 @@ public class SmackTheRatManager : Minigame
 
     public override void StartMinigame()
     {
+        EventBus.InvokeOnSFXCalled(SFXType.RatSqueek1);
         currentClicks = 0;
         ratImage.SetActive(true);
         isMoving = true;
@@ -92,10 +93,12 @@ public class SmackTheRatManager : Minigame
 
         if (currentClicks >= clicksNeeded)
         {
+            EventBus.InvokeOnSFXCalled(SFXType.RatSqueek2);
             CompleteMinigame();
         }
         else
         {
+            EventBus.InvokeOnSFXCalled(SFXType.RatGotSmacked);
             PickNewTarget();
             currentMoveSpeed = escapeMoveSpeed;
 

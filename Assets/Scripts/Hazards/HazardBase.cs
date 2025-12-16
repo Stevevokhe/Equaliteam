@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class HazardBase : MonoBehaviour
 {
     public string hazardName;
+    public HazardType type;
     public int hazardPhase = 1;
     public PlayerTool requiredTool;
     [SerializeField] private VFXManager vFXManager;
@@ -94,6 +95,37 @@ public class HazardBase : MonoBehaviour
             phase2Progress = Mathf.Clamp01(phase2Progress);
 
             TimerImage.fillAmount = phase2Progress;
+        }
+    }
+
+    private void TriggerSoundForPhase2()
+    {
+        switch (type)
+        {
+            case HazardType.Fire:
+                EventBus.InvokeOnSFXCalled(SFXType.FireStartQuiet);
+                break;
+            case HazardType.Electric:
+                EventBus.InvokeOnSFXCalled(SFXType.ElectricSparks);
+                break;
+            case HazardType.Water:
+                EventBus.InvokeOnSFXCalled(SFXType.LeakingWaterStart);
+                break;
+        }
+    }
+    private void TriggerSoundForPhase3()
+    {
+        switch (type)
+        {
+            case HazardType.Fire:
+                EventBus.InvokeOnSFXCalled(SFXType.FireBig);
+                break;
+            case HazardType.Electric:
+                EventBus.InvokeOnSFXCalled(SFXType.FireBig);
+                break;
+            case HazardType.Water:
+                EventBus.InvokeOnSFXCalled(SFXType.LeakingWaterStart);
+                break;
         }
     }
 
@@ -245,6 +277,8 @@ public class HazardBase : MonoBehaviour
         SetTimerUI(true);
         StopPulseCoroutine();
 
+        TriggerSoundForPhase2();
+
         vFXManager.ActivateStage2VFX();
 
         if (TimerImage != null)
@@ -256,6 +290,7 @@ public class HazardBase : MonoBehaviour
     public virtual void TriggerThirdPhase()
     {
         HazardManager.Instance.StartHouseBurning();
+        TriggerSoundForPhase3();
         SetThirdPhaseUI(true);
         SetTimerUI(false);
         StartPulseCoroutine();
@@ -302,6 +337,13 @@ public class HazardBase : MonoBehaviour
         }
     }
 
+    public enum HazardType
+    {
+        None,
+        Fire,
+        Electric,
+        Water
+    }
     private void OnDestroy()
     {
         StopPulseCoroutine();
