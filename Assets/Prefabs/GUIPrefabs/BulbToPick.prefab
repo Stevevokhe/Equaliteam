@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 227513134658702120}
   - component: {fileID: 2239736765984689541}
   - component: {fileID: 1486696661605955619}
-  - component: {fileID: 448620662108867895}
   m_Layer: 5
   m_Name: BulbToPick
   m_TagString: LightBulbPuzzle
@@ -165,17 +164,3 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &448620662108867895
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 325498153563077301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 488dead773949ac44a122bc52024c335, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hoverScale: 2
-  scaleSpeed: 10
