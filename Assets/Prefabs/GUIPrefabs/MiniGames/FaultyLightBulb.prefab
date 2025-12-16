@@ -1168,8 +1168,6 @@ MonoBehaviour:
   switchOnSprite: {fileID: 1829295610, guid: 6ac225c4b91f8514c9c5e10e567f0088, type: 3}
   switchOffSprite: {fileID: 8945702, guid: 6ac225c4b91f8514c9c5e10e567f0088, type: 3}
   isActive: 0
-  bulbStartSnapPoint: {fileID: 0}
-  bulbToPick: {fileID: 2063489128123303274}
 --- !u!1 &4500214515237237555
 GameObject:
   m_ObjectHideFlags: 0
@@ -2540,11 +2538,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5aac0c149928fda40bec088b00a36255, type: 3}
---- !u!1 &2063489128123303274 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 325498153563077301, guid: 5aac0c149928fda40bec088b00a36255, type: 3}
-  m_PrefabInstance: {fileID: 1740248409371557855}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6703326362479772479 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4981092766233263328, guid: 5aac0c149928fda40bec088b00a36255, type: 3}
