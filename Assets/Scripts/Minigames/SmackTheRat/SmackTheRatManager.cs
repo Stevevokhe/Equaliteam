@@ -10,6 +10,8 @@ public class SmackTheRatManager : Minigame
     [SerializeField] private float moveSpeed = 200f; // Speed of rat movement
     [SerializeField] private float escapeMoveSpeed = 500f; // Speed when escaping after being hit
     [SerializeField] private int clicksNeeded = 3;
+    [SerializeField] private GameObject broomPrefab; // Broom cursor prefab
+    [SerializeField] private Canvas canvas; // Reference to the canvas
 
     private Button ratButton;
     private RectTransform ratRectTransform;
@@ -17,6 +19,9 @@ public class SmackTheRatManager : Minigame
     private Vector2 targetPosition;
     private bool isMoving = false;
     private float currentMoveSpeed;
+    private GameObject broomInstance;
+    private RectTransform broomRectTransform;
+
     void Awake()
     {
         ratButton = ratImage.GetComponent<Button>();
@@ -24,14 +29,35 @@ public class SmackTheRatManager : Minigame
         {
             ratButton = ratImage.AddComponent<Button>();
         }
-
         ratRectTransform = ratImage.GetComponent<RectTransform>();
         currentMoveSpeed = moveSpeed;
+
+        // Get canvas if not assigned
+        if (canvas == null)
+        {
+            canvas = GetComponentInParent<Canvas>();
+        }
     }
 
     void Start()
     {
         ratButton.onClick.AddListener(OnRatClicked);
+    }
+
+    void Update()
+    {
+        // Make broom follow mouse
+        if (broomInstance != null && broomRectTransform != null)
+        {
+            Vector2 mousePosition;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                canvas.transform as RectTransform,
+                Input.mousePosition,
+                canvas.renderMode == RenderMode.ScreenSpaceOverlay ? null : canvas.worldCamera,
+                out mousePosition
+            );
+            broomRectTransform.anchoredPosition = mousePosition;
+        }
     }
 
     public override void StartMinigame()
@@ -41,11 +67,19 @@ public class SmackTheRatManager : Minigame
         ratImage.SetActive(true);
         isMoving = true;
 
+        // Spawn broom cursor
+        if (broomPrefab != null)
+        {
+            broomInstance = Instantiate(broomPrefab, canvas.transform);
+            broomRectTransform = broomInstance.GetComponent<RectTransform>();
+
+            // Hide system cursor
+            Cursor.visible = false;
+        }
+
         int startIndex = Random.Range(0, ratPositions.Count);
         ratRectTransform.anchoredPosition = ratPositions[startIndex].anchoredPosition;
-
         PickNewTarget(startIndex);
-
         StartCoroutine(ContinuousMovement());
     }
 
@@ -93,6 +127,7 @@ public class SmackTheRatManager : Minigame
 
         if (currentClicks >= clicksNeeded)
         {
+            EventBus.InvokeOnSFXCalled(SFXType.SuccesfullPuzzleCompleted);
             EventBus.InvokeOnSFXCalled(SFXType.RatSqueek2);
             CompleteMinigame();
         }
@@ -101,7 +136,6 @@ public class SmackTheRatManager : Minigame
             EventBus.InvokeOnSFXCalled(SFXType.RatGotSmacked);
             PickNewTarget();
             currentMoveSpeed = escapeMoveSpeed;
-
             StartCoroutine(ClickAnimation());
         }
     }
@@ -118,8 +152,16 @@ public class SmackTheRatManager : Minigame
     {
         isMoving = false;
         EventBus.InvokeOnMinigameCompleted();
-
         ratImage.SetActive(false);
+
+        // Destroy broom and restore cursor
+        if (broomInstance != null)
+        {
+            Destroy(broomInstance);
+            broomInstance = null;
+        }
+        Cursor.visible = true;
+
         gameObject.SetActive(false);
     }
 
@@ -129,5 +171,12 @@ public class SmackTheRatManager : Minigame
         {
             ratButton.onClick.RemoveListener(OnRatClicked);
         }
+
+        // Clean up broom if object is destroyed
+        if (broomInstance != null)
+        {
+            Destroy(broomInstance);
+        }
+        Cursor.visible = true;
     }
 }

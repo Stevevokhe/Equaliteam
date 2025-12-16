@@ -794,7 +794,7 @@ MonoBehaviour:
   leftPoint: {fileID: 6941601814674855004}
   rightPoint: {fileID: 4052080894021812306}
   horizontalSpeed: 600
-  verticalSpeed: 600
+  verticalSpeed: 1200
   startingPosition: {fileID: 1121264429392647034}
 --- !u!222 &1927023738195783719
 CanvasRenderer:
