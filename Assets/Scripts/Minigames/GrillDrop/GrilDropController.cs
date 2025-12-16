@@ -90,7 +90,7 @@ public class GrilDropController : MonoBehaviour
         SetPhysicsActive(false);
     } 
 
-    void SnapObjectToAttachPoint()
+    public void SnapObjectToAttachPoint()
     {
         objectToHold.transform.position = attachPoint.position;
         objectToHold.transform.rotation = attachPoint.rotation;
@@ -106,7 +106,7 @@ public class GrilDropController : MonoBehaviour
         SetPhysicsActive(true);
     }
 
-    private void SetPhysicsActive(bool active)
+    public void SetPhysicsActive(bool active)
     {
         if (rb2D != null)
         {

@@ -4,6 +4,7 @@ using UnityEngine;
 public class GrillDropTop : MonoBehaviour
 {
     private bool canBeReseted=true;
+    [SerializeField] private float resetTime=2;
     void OnCollisionEnter2D(Collision2D col)
     {
         if(canBeReseted)
@@ -17,7 +18,7 @@ public class GrillDropTop : MonoBehaviour
     IEnumerator ResetTop()
     {
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(resetTime);
         canBeReseted = true;
         GameObject.FindAnyObjectByType<GrilDropController>().ResetGrillTop();
     }

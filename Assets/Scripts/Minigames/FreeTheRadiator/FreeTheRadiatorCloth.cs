@@ -6,7 +6,7 @@ public class FreeTheRadiatorCloth : MonoBehaviour
     [SerializeField] private float flySpeed = 500f;
     [SerializeField] private float spinSpeed = 360f;
 
-    private bool flying = false;
+    public bool flying = false;
     private RectTransform rect;
     private FreeTheRadiatorManager manager;
     private Vector3 originalPosition;

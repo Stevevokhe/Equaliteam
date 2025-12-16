@@ -9,6 +9,7 @@ public class OvenManager : Minigame
     public override void StartMinigame()
     {
         isActive = true;
+        knobsToTurnOff = 0;
         EventBus.InvokeOnKnobReseted();
     }
 
