@@ -3,7 +3,17 @@ guid: 4d4c0dd97b4d0994cb5eedc4ca1059f3
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kitchen_Cabins_Double.003
+    second: {fileID: 2100000, guid: bba008f903e665e4b8995c11c577e7ee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wood.002
+    second: {fileID: -7238608322629146716, guid: d37db2fa5e12d56459f7ce30fc16983e, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

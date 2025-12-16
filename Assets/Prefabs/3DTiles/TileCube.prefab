@@ -26,7 +26,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.039, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 6, y: 6, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1961750145135472572}
@@ -83,7 +83,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 17cfeb7e13e2b734ea7ff12b86fc9aa9, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 781a20f4b8c094f43821af41d52156b4, type: 2}
+      objectReference: {fileID: 2100000, guid: dea048ec96976954ca889d6ab82a0bba, type: 2}
     - target: {fileID: 919132149155446097, guid: 17cfeb7e13e2b734ea7ff12b86fc9aa9, type: 3}
       propertyPath: m_Name
       value: Base_Floor_tile
