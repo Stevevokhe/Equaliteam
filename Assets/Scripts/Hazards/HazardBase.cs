@@ -7,7 +7,7 @@ public class HazardBase : MonoBehaviour
     public string hazardName;
     public int hazardPhase = 1;
     public PlayerTool requiredTool;
-    public GameObject smokeObject;
+    [SerializeField] private VFXManager vFXManager;
     public float internalTimer;
     public float secondPhaseThreshold = 10f;
     public float thirdPhaseThreshold = 30f;
@@ -31,7 +31,6 @@ public class HazardBase : MonoBehaviour
 
     private void Start()
     {
-        SetVFX(false);
         SetTimerUI(false);
         InitializeHazard();
 
@@ -121,7 +120,7 @@ public class HazardBase : MonoBehaviour
         isActive = false;
         internalTimer = 0f;
         hazardPhase = 1;
-        SetVFX(false);
+        vFXManager.DeactivateAllVFX();
         SetTimerUI(false);
         SetThirdPhaseUI(false);
         StopPulseCoroutine();
@@ -169,7 +168,7 @@ public class HazardBase : MonoBehaviour
             isActive = false;
             internalTimer = 0f;
             hazardPhase = 1;
-            SetVFX(false);
+            vFXManager.DeactivateAllVFX();
             SetTimerUI(false);
             SetThirdPhaseUI(false);
             StopPulseCoroutine();
@@ -232,16 +231,15 @@ public class HazardBase : MonoBehaviour
         }
     }
 
-    private void SetVFX(bool objectStatus)
-    {
-        if (smokeObject != null)
-            smokeObject.SetActive(objectStatus);
-    }
+    //private void SetVFX(bool objectStatus)
+    //{
+        //if (smokeObject != null)
+            //smokeObject.SetActive(objectStatus);
+    //}
 
     public virtual void TriggerFirstPhase()
     {
         Debug.Log("First phase triggered on " + gameObject);
-        SetVFX(false);
         SetTimerUI(false);
         SetThirdPhaseUI(false);
         StopPulseCoroutine();
@@ -250,9 +248,10 @@ public class HazardBase : MonoBehaviour
     public virtual void TriggerSecondPhase()
     {
         Debug.Log("Second phase triggered on " + gameObject);
-        SetVFX(true);
         SetTimerUI(true);
         StopPulseCoroutine();
+
+        vFXManager.ActivateStage1VFX();
 
         if (TimerImage != null)
         {
@@ -266,6 +265,9 @@ public class HazardBase : MonoBehaviour
         SetThirdPhaseUI(true);
         SetTimerUI(false);
         StartPulseCoroutine();
+
+        vFXManager.ActivateStage2VFX();
+        vFXManager.DeactivateStage1VFX();
     }
 
     private void StartPulseCoroutine()
