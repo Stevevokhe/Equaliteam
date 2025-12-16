@@ -15,7 +15,10 @@ public class Interactable : MonoBehaviour
         thisHazard = GetComponent<HazardBase>();
 
         interactionText = GameObject.Find("GameCanvas");
-        interactionText = interactionText.transform.Find("InteractText").gameObject;
+        if (interactionText != null)
+        {
+            interactionText = interactionText.transform.Find("InteractText").gameObject;
+        }
     }
 
     private void Update()
