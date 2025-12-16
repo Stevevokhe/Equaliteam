@@ -95,7 +95,51 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Minigame_Sauna_boards_asset_0
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 739
+        width: 1874
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90020a3949c00114783e97480104fa2e
+      internalID: -1204761870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Minigame_Sauna_boards_asset_1
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 268
+        width: 1078
+        height: 205
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2799ef771ba439149bbff4d84fd78121
+      internalID: -1886193990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -109,7 +153,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Minigame_Sauna_boards_asset_0: -1204761870
+      Minigame_Sauna_boards_asset_1: -1886193990
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

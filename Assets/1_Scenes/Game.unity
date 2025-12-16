@@ -925,7 +925,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5585252185159671936, guid: 9174e75ed4917594286f96812973f8e1, type: 3}
       propertyPath: minigameName
-      value: Grill
+      value: GrillDrop
       objectReference: {fileID: 0}
     - target: {fileID: 5596566756961707917, guid: 9174e75ed4917594286f96812973f8e1, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
