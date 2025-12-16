@@ -28,14 +28,12 @@ public class FaultyLightBulbMinigameManager : Minigame
         ActivateStage(0);
         bulb1.ResetBulb();
         bulb2.ResetBulb();
-        bulbStartSnapPoint = GameObject.Find("BulbStartSnapPoint");
-        bulbToPick = GameObject.Find("BulbToPick");
+        bulbToPick.transform.position = bulbStartSnapPoint.transform.position;
     }
 
     public void ResetPuzzle()
     {
         switchImage.sprite = switchOnSprite;
-        bulbToPick.transform.position = bulbStartSnapPoint.transform.position;
     }
 
     public void ActivateStage(int stageNumber)

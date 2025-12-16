@@ -40,6 +40,7 @@ public class OvenKnobController : MonoBehaviour, IDragHandler, IPointerDownHandl
         float randomAngle = Random.Range(20f, 300f);
         handle.localEulerAngles = new Vector3(0f, 0f, -randomAngle);
         fill.fillAmount = randomAngle / 360;
+        isDone = false;
     }
 
     public void OnPointerDown(PointerEventData eventData)
