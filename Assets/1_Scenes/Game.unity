@@ -1023,10 +1023,6 @@ PrefabInstance:
       propertyPath: type
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7257762886304817715, guid: 9174e75ed4917594286f96812973f8e1, type: 3}
-      propertyPath: hazardName
-      value: Grill
-      objectReference: {fileID: 0}
     - target: {fileID: 7291546222279458604, guid: 9174e75ed4917594286f96812973f8e1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.0071983337
