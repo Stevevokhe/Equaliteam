@@ -18,7 +18,7 @@ public class FreeTheRadiatorManager : Minigame
         for(int i =0; i < clothes.Length; i++)
         {
             clothes[i].transform.position = clothPositions[i].transform.position;
-            clothes[i].GetComponent<FreeTheRadiatorCloth>().flying = false;
+            clothes[i].GetComponent<FreeTheRadiatorCloth>().ResetCloth();
         }
     }
 

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class FaultyLightBulbMinigameManager : Minigame
 {
     [SerializeField] private GameObject[] stages;
-
+    [SerializeField] private FaultyLightBulbController bulb1, bulb2;
     [SerializeField] private Image switchImage;
     [SerializeField] private Sprite switchOnSprite;
     [SerializeField] private Sprite switchOffSprite;
@@ -26,6 +26,8 @@ public class FaultyLightBulbMinigameManager : Minigame
     {
         isActive = true;
         ActivateStage(0);
+        bulb1.ResetBulb();
+        bulb2.ResetBulb();
         bulbStartSnapPoint = GameObject.Find("BulbStartSnapPoint");
         bulbToPick = GameObject.Find("BulbToPick");
     }

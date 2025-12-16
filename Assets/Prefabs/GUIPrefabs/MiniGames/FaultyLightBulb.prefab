@@ -1137,6 +1137,8 @@ MonoBehaviour:
   - {fileID: 5080666974830658738}
   - {fileID: 8969277997557701123}
   - {fileID: 322055030806751853}
+  bulb1: {fileID: 6760898331855340310}
+  bulb2: {fileID: 4401406109086083249}
   switchImage: {fileID: 8041706708811360603}
   switchOnSprite: {fileID: 21300000, guid: 84a79bb045c03e845be83ff81714759e, type: 3}
   switchOffSprite: {fileID: 21300000, guid: 63019b178163a4b4cb1c6d02b24e4adc, type: 3}

@@ -17,6 +17,12 @@ public class FreeTheRadiatorCloth : MonoBehaviour
         originalPosition = transform.position;
     }
 
+    public void ResetCloth()
+    {
+        flying = false;
+        transform.rotation = Quaternion.identity;
+    }
+
     void Update()
     {
         if (flying)
