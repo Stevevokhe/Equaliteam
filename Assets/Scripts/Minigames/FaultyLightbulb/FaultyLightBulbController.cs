@@ -32,10 +32,8 @@ public class FaultyLightBulbController : MonoBehaviour, IDragHandler, IPointerDo
     private void Awake()
     {
         manager = GameObject.FindAnyObjectByType<FaultyLightBulbMinigameManager>();
-        
-        handle.localEulerAngles = new Vector3(0f, 0f, -startAngle);
-        originalRotation = gameObject.transform.rotation;
-        fill.fillAmount = 1;
+
+        ResetBulb();
     }
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -47,6 +45,13 @@ public class FaultyLightBulbController : MonoBehaviour, IDragHandler, IPointerDo
             out centerPoint
         );
         centerPoint = handle.TransformPoint(centerPoint);
+    }
+
+    public void ResetBulb()
+    {
+        handle.localEulerAngles = new Vector3(0f, 0f, -startAngle);
+        originalRotation = gameObject.transform.rotation;
+        fill.fillAmount = 1;
     }
 
     public void OnDrag(PointerEventData eventData)

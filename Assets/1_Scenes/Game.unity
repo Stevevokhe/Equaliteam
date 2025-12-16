@@ -324,11 +324,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3189279631332005086, guid: 532c51bdb517fb9458eb7355020dd9b8, type: 3}
   m_PrefabInstance: {fileID: 1113483324032914845}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &277031110 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1539426460345031259, guid: 532c51bdb517fb9458eb7355020dd9b8, type: 3}
-  m_PrefabInstance: {fileID: 1113483324032914845}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &290128149 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7732146416078986541, guid: 532c51bdb517fb9458eb7355020dd9b8, type: 3}
@@ -978,10 +973,6 @@ PrefabInstance:
     - target: {fileID: 6839731262149972911, guid: 9174e75ed4917594286f96812973f8e1, type: 3}
       propertyPath: m_LocalPosition.z
       value: -2.56
-      objectReference: {fileID: 0}
-    - target: {fileID: 7257762886304817715, guid: 9174e75ed4917594286f96812973f8e1, type: 3}
-      propertyPath: hazardName
-      value: Grilll
       objectReference: {fileID: 0}
     - target: {fileID: 7291546222279458604, guid: 9174e75ed4917594286f96812973f8e1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1685,11 +1676,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -179.986, z: 0}
---- !u!1 &1723043411 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7393667968243304298, guid: 532c51bdb517fb9458eb7355020dd9b8, type: 3}
-  m_PrefabInstance: {fileID: 1113483324032914845}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1787144178 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1739435925016064946, guid: 1f0a0eacf061d1641abe7276337f95e9, type: 3}
@@ -3065,7 +3051,7 @@ PrefabInstance:
     - target: {fileID: 3731771584163358018, guid: eeb5fc9e6969a2544a4c6fb50b99b06a, type: 3}
       propertyPath: minigameUIList.Array.data[3].MinigameObject
       value: 
-      objectReference: {fileID: 1723043411}
+      objectReference: {fileID: 0}
     - target: {fileID: 3731771584163358018, guid: eeb5fc9e6969a2544a4c6fb50b99b06a, type: 3}
       propertyPath: minigameUIList.Array.data[4].MinigameObject
       value: 
@@ -3077,7 +3063,7 @@ PrefabInstance:
     - target: {fileID: 3731771584163358018, guid: eeb5fc9e6969a2544a4c6fb50b99b06a, type: 3}
       propertyPath: minigameUIList.Array.data[6].MinigameObject
       value: 
-      objectReference: {fileID: 277031110}
+      objectReference: {fileID: 0}
     - target: {fileID: 3731771584163358018, guid: eeb5fc9e6969a2544a4c6fb50b99b06a, type: 3}
       propertyPath: minigameUIList.Array.data[7].MinigameObject
       value: 
