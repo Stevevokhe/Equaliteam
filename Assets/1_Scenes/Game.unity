@@ -293,59 +293,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1539426460345031259, guid: 532c51bdb517fb9458eb7355020dd9b8, type: 3}
   m_PrefabInstance: {fileID: 1113483324032914845}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &283599284 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6741854578590378819, guid: b8013758206b6aa408cbcb31e1cb4130, type: 3}
-  m_PrefabInstance: {fileID: 1074184639}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &283599288
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 283599284}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 19.868505, y: 5.8353314, z: 7.419516}
-  m_Center: {x: -9.585832, y: -0.00056785037, z: -0.15827589}
---- !u!54 &283599289
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 283599284}
-  serializedVersion: 4
-  m_Mass: 10
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &290128149 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7732146416078986541, guid: 532c51bdb517fb9458eb7355020dd9b8, type: 3}
@@ -359,11 +306,6 @@ GameObject:
 --- !u!1 &312127207 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 554223056367675664, guid: 532c51bdb517fb9458eb7355020dd9b8, type: 3}
-  m_PrefabInstance: {fileID: 1113483324032914845}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &497174600 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7688528467203591191, guid: 532c51bdb517fb9458eb7355020dd9b8, type: 3}
   m_PrefabInstance: {fileID: 1113483324032914845}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &517337635 stripped
@@ -519,14 +461,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 890540192799396856, guid: b8013758206b6aa408cbcb31e1cb4130, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.6932383
-      objectReference: {fileID: 0}
-    - target: {fileID: 890540192799396856, guid: b8013758206b6aa408cbcb31e1cb4130, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 5.24
-      objectReference: {fileID: 0}
     - target: {fileID: 2397655249210524194, guid: b8013758206b6aa408cbcb31e1cb4130, type: 3}
       propertyPath: m_Name
       value: Map 1
@@ -574,19 +508,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4177891535559761717, guid: b8013758206b6aa408cbcb31e1cb4130, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1275713306}
-    - targetCorrespondingSourceObject: {fileID: 4177891535559761717, guid: b8013758206b6aa408cbcb31e1cb4130, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1275713305}
-    - targetCorrespondingSourceObject: {fileID: 6741854578590378819, guid: b8013758206b6aa408cbcb31e1cb4130, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 283599289}
-    - targetCorrespondingSourceObject: {fileID: 6741854578590378819, guid: b8013758206b6aa408cbcb31e1cb4130, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 283599288}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8013758206b6aa408cbcb31e1cb4130, type: 3}
 --- !u!1001 &1102787364
 PrefabInstance:
@@ -780,59 +702,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5266781535098867956, guid: 532c51bdb517fb9458eb7355020dd9b8, type: 3}
   m_PrefabInstance: {fileID: 1113483324032914845}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1275713301 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4177891535559761717, guid: b8013758206b6aa408cbcb31e1cb4130, type: 3}
-  m_PrefabInstance: {fileID: 1074184639}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &1275713305
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1275713301}
-  serializedVersion: 4
-  m_Mass: 10
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!65 &1275713306
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1275713301}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.0235023, y: 1.8327211, z: 4.071806}
-  m_Center: {x: -0.012464017, y: 0.92033696, z: -0.0000032193939}
 --- !u!1001 &1310985709
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1368,7 +1237,7 @@ PrefabInstance:
     - target: {fileID: 2490069395093854037, guid: 532c51bdb517fb9458eb7355020dd9b8, type: 3}
       propertyPath: ropeObject
       value: 
-      objectReference: {fileID: 497174600}
+      objectReference: {fileID: 0}
     - target: {fileID: 2490069395093854037, guid: 532c51bdb517fb9458eb7355020dd9b8, type: 3}
       propertyPath: minRopeScaleY
       value: 0.8
