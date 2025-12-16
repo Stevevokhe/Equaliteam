@@ -13,7 +13,7 @@ public class HazardManager : MonoBehaviour
 
     [Header("Hazard Triggering")]
     [Tooltip("Minimum seconds between hazard triggers")]
-    public float minHazardInterval = 4f;
+    public float minHazardInterval = 3f;
 
     [Tooltip("Maximum seconds between hazard triggers")]
     public float maxHazardInterval = 6f;
