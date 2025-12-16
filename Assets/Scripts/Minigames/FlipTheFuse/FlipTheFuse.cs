@@ -80,7 +80,7 @@ public class FlipTheFuse : Minigame
         Debug.Log("=== Starting FlipTheFuse Minigame ===");
 
         isActive = true;
-
+        EventBus.InvokeOnSFXCalled(SFXType.ElectricHum);
         if (switchStates.Count != switchObjects.Count)
         {
             Debug.Log("Reinitializing switches due to count mismatch");
@@ -180,6 +180,7 @@ public class FlipTheFuse : Minigame
         }
 
         switchStates[switchObj] = !switchStates[switchObj];
+        EventBus.InvokeOnSFXCalled(SFXType.FuseClick);
 
         UpdateSwitchVisual(switchObj);
 
