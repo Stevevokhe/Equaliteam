@@ -335,9 +335,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handle: {fileID: 3691950482232574730}
   fill: {fileID: 1514891986008143563}
-  minAngle: 225
+  minAngle: 0
   maxAngle: 315
-  doneThreshold: 0.5
+  doneThreshold: 10
 --- !u!1 &1278125121965437729
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,9 +464,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handle: {fileID: 9736860861873846}
   fill: {fileID: 2136027677681387309}
-  minAngle: 225
+  minAngle: 0
   maxAngle: 315
-  doneThreshold: 0.5
+  doneThreshold: 10
 --- !u!1 &3512751117526819649
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,9 +594,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handle: {fileID: 2623933383630539911}
   fill: {fileID: 6993731114217358953}
-  minAngle: 225
+  minAngle: 0
   maxAngle: 315
-  doneThreshold: 0.5
+  doneThreshold: 10
 --- !u!1 &4752481135162716218
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,9 +800,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handle: {fileID: 4922762995645680859}
   fill: {fileID: 4144590067105228781}
-  minAngle: 225
+  minAngle: 0
   maxAngle: 315
-  doneThreshold: 0.5
+  doneThreshold: 10
 --- !u!1 &5164231672213564176
 GameObject:
   m_ObjectHideFlags: 0

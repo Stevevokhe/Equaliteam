@@ -22,6 +22,14 @@ public class FaultyLightBulbMinigameManager : Minigame
         bulbToPick = GameObject.Find("BulbToPick");
     }
 
+    public override void StartMinigame()
+    {
+        isActive = true;
+        ActivateStage(0);
+        bulbStartSnapPoint = GameObject.Find("BulbStartSnapPoint");
+        bulbToPick = GameObject.Find("BulbToPick");
+    }
+
     public void ResetPuzzle()
     {
         switchImage.sprite = switchOnSprite;

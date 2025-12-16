@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class FreeTheRadiatorHand : MonoBehaviour
 {
-    public RectTransform leftPoint;
-    public RectTransform rightPoint;
-    public float horizontalSpeed = 200f;
-    public float verticalSpeed = 400f;
-
+    [SerializeField] private RectTransform leftPoint;
+    [SerializeField] private RectTransform rightPoint;
+    [SerializeField] private float horizontalSpeed = 200f;
+    [SerializeField] private float verticalSpeed = 400f;
+    [SerializeField] private Transform startingPosition;
     private RectTransform rect;
     private bool movingRight = true;
     private bool movingHorizontally = true;
@@ -99,6 +99,12 @@ public class FreeTheRadiatorHand : MonoBehaviour
             // Hit something else, go back up.
             ReturnUp();
         }
+    }
+
+    public void ResetHand()
+    {
+        transform.position = startingPosition.position;
+        movingHorizontally = true;
     }
 
     void ReturnUp()

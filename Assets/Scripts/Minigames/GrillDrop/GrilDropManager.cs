@@ -5,9 +5,12 @@ public class GrilDropManager : Minigame
     [Header("State")]
     [SerializeField] private bool isActive = false;
     private bool isTopConnected;
+    private GrilDropController grillTop;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void StartMinigame()
     {
+        grillTop = GameObject.FindAnyObjectByType<GrilDropController>();
+        grillTop.ResetGrillTop();
         isActive = true;
         isTopConnected = false;
     }
