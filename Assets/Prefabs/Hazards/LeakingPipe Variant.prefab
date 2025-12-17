@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2485065695752365954, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2748957458184413757, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
       propertyPath: m_LocalPosition.x
       value: -26.514
@@ -52,6 +56,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5212941002278442256, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: stage2VFX
+      value: 
+      objectReference: {fileID: 2858876942813984041}
+    - target: {fileID: 5212941002278442256, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: stage3VFX
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5212941002278442256, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: requiresActivationThroughScript
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5256291795836490014, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
       propertyPath: type
       value: 3
@@ -67,6 +83,18 @@ PrefabInstance:
     - target: {fileID: 5774747492385498440, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
       propertyPath: m_Name
       value: LeakingPipe Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6656217453638682257, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 6656217453638682257, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 6656217453638682257, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 6966427084353008096, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
       propertyPath: m_IsActive
@@ -85,3 +113,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+--- !u!1 &2858876942813984041 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6966427084353008096, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+  m_PrefabInstance: {fileID: 5116509090217854153}
+  m_PrefabAsset: {fileID: 0}
