@@ -755,6 +755,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.43
       objectReference: {fileID: 0}
+    - target: {fileID: 4471854357413682708, guid: 9174e75ed4917594286f96812973f8e1, type: 3}
+      propertyPath: stage2VFX
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4471854357413682708, guid: 9174e75ed4917594286f96812973f8e1, type: 3}
+      propertyPath: stage3VFX
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6292205190013523020, guid: 9174e75ed4917594286f96812973f8e1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.9690042

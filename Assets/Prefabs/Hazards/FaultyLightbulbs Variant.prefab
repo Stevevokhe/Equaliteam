@@ -90,6 +90,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1979077589609917265, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.5800005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1979077589609917265, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.409
+      objectReference: {fileID: 0}
+    - target: {fileID: 1979077589609917265, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.5329994
+      objectReference: {fileID: 0}
     - target: {fileID: 2748957458184413757, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.24
@@ -130,6 +142,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5212941002278442256, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: stage2VFX
+      value: 
+      objectReference: {fileID: 4210198017889030558}
+    - target: {fileID: 5212941002278442256, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: stage3VFX
+      value: 
+      objectReference: {fileID: 8756777737632930020}
     - target: {fileID: 5256291795836490014, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
       propertyPath: type
       value: 2
@@ -142,9 +162,65 @@ PrefabInstance:
       propertyPath: m_Name
       value: FaultyLightbulbs Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6303214364663635471, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 0.999988
+      objectReference: {fileID: 0}
+    - target: {fileID: 6303214364663635471, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 0.99999505
+      objectReference: {fileID: 0}
+    - target: {fileID: 6303214364663635471, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: ShapeModule.m_Position.x
+      value: 0.000051173025
+      objectReference: {fileID: 0}
+    - target: {fileID: 6303214364663635471, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: ShapeModule.m_Position.z
+      value: 0.000050993985
+      objectReference: {fileID: 0}
+    - target: {fileID: 6303214364663635471, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: ShapeModule.m_Rotation.x
+      value: 31.731373
+      objectReference: {fileID: 0}
+    - target: {fileID: 6303214364663635471, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: ShapeModule.m_Rotation.y
+      value: 329.45007
+      objectReference: {fileID: 0}
+    - target: {fileID: 6303214364663635471, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: ShapeModule.m_Rotation.z
+      value: 0.0000030114645
+      objectReference: {fileID: 0}
     - target: {fileID: 7045903794051126189, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
       propertyPath: minigameName
       value: FaultyLightbulbs
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361399223856780198, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.065
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361399223856780198, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.124
+      objectReference: {fileID: 0}
+    - target: {fileID: 8361399223856780198, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8622484155930892944, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8643904204475312145, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 8643904204475312145, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.409
+      objectReference: {fileID: 0}
+    - target: {fileID: 8643904204475312145, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.533
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -158,9 +234,19 @@ PrefabInstance:
       addedObject: {fileID: 7430023011609035579}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+--- !u!1 &4210198017889030558 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8622484155930892944, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+  m_PrefabInstance: {fileID: 5603770332942273294}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7774010462950893875 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2748957458184413757, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
+  m_PrefabInstance: {fileID: 5603770332942273294}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8756777737632930020 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3765789501458043882, guid: 6d50f0bb65101204b9ba93b0048d0567, type: 3}
   m_PrefabInstance: {fileID: 5603770332942273294}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6959758990134879440
